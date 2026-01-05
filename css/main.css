@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-dark: #020617;
+  --bg-soft: #050b1e;
+  --bg-light: #f8fafc;
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+  --accent: #60a5fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-main);
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* NAV */
+header {
+  border-bottom: 1px solid #0f172a;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+}
+.brand {
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  position: relative;
+}
+.brand::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+}
+nav a {
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-left: 24px;
+  font-size: 14px;
+}
+
+/* HERO V2 */
+.hero-v2 {
+  position: relative;
+  padding: 160px 0 140px;
+  overflow: hidden;
+}
+.hero-inner {
+  position: relative;
+}
+.hero-rail {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent),
+    transparent
+  );
+}
+.hero-content {
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+}
+.hero-v2 h1 {
+  font-size: 58px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.hero-v2 h1 span {
+  color: var(--accent);
+}
+.hero-v2 p {
+  font-size: 18px;
+  max-width: 520px;
+  color: var(--text-muted);
+}
+.hero-atmosphere {
+  position: absolute;
+  right: -200px;
+  top: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle at center,
+    rgba(96,165,250,0.12),
+    rgba(2,6,23,0) 70%
+  );
+}
+
+/* EYEBROW */
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn.primary {
+  background: var(--accent);
+  color: #020617;
+  padding: 16px 32px;
+  border-radius: 10px;
+}
+.btn.ghost {
+  border: 1px solid #1e293b;
+  padding: 16px 30px;
+  border-radius: 10px;
+  margin-left: 16px;
+  color: var(--text-main);
+}
+
+/* SECTIONS */
+.section {
+  padding: 120px 0;
+}
+
+/* ANCHOR */
+.anchor {
+  background: var(--bg-soft);
+}
+.anchor-grid {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 40px;
+}
+.anchor-line {
+  width: 4px;
+  background: var(--accent);
+}
+
+/* CAPABILITIES */
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+.capability {
+  position: relative;
+  padding-left: 20px;
+}
+.cap-rail {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+/* PHILOSOPHY */
+.philosophy {
+  background: var(--bg-soft);
+}
+blockquote {
+  font-size: 30px;
+  text-align: center;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+}
+.cta p {
+  color: var(--text-muted);
+}
+
+/* FOOTER */
+footer {
+  border-top: 1px solid #0f172a;
+  padding: 50px 0;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* CONTACT FORM POLISH */
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.contact-form label {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: var(--text-main);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #64748b;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px rgba(96,165,250,0.3);
+}
+
+.contact-form button {
+  margin-top: 12px;
+  align-self: flex-start;
+}
+
+/* HERO WALLPAPER BACKGROUND */
+
+.hero-v2 {
+  position: relative;
+  background:
+    radial-gradient(
+      circle at 70% 30%,
+      rgba(96,165,250,0.12),
+      rgba(2,6,23,0) 55%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(2,6,23,0.95),
+      rgba(2,6,23,1)
+    );
+}
+
+.hero-v2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 60% 30%, black, transparent 70%);
+  pointer-events: none;
+}
