@@ -1,187 +1,744 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Axeron Technologies | Built for Scale</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/main.css" />
+    <title>
+      Axeron Technologies — Custom Software Development & Business Applications
+    </title>
+    <meta
+      name="description"
+      content="Axeron Technologies builds purpose-built web applications, management systems, and SaaS products for businesses. Self-hosted delivery. End-to-end from architecture to deployment."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                DEFAULT: "#1a3a6e",
+                50: "#f0f4fb",
+                100: "#dce6f5",
+                dark: "#0f2447",
+                deeper: "#0a1e3d",
+                light: "#2550a0",
+              },
+              gold: {
+                DEFAULT: "#b07d10",
+                light: "#d4960f",
+                bright: "#f59e0b",
+                pale: "#fef3c7",
+              },
+            },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            boxShadow: {
+              card: "0 4px 24px rgba(15,36,71,0.08)",
+              "card-hover": "0 12px 40px rgba(15,36,71,0.16)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: #f8fafd;
+      }
+
+      .gradient-hero {
+        background-color: #0a1e3d;
+        background-image:
+          linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.025) 25%,
+            transparent 25%
+          ),
+          linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.025) 25%,
+            transparent 25%
+          ),
+          linear-gradient(
+            45deg,
+            transparent 75%,
+            rgba(255, 255, 255, 0.025) 75%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 75%,
+            rgba(255, 255, 255, 0.025) 75%
+          ),
+          linear-gradient(
+            145deg,
+            #0a1e3d 0%,
+            #0f2447 40%,
+            #1a3a6e 80%,
+            #1e4585 100%
+          );
+        background-size:
+          40px 40px,
+          40px 40px,
+          40px 40px,
+          40px 40px,
+          100% 100%;
+        background-position:
+          0 0,
+          0 20px,
+          20px -20px,
+          -20px 0px,
+          center;
+      }
+
+      .card-hover {
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .feature-card {
+        transition:
+          transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.28s ease;
+      }
+      .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(15, 36, 71, 0.12);
+      }
+
+      .glow-btn {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45);
+        transition: all 0.2s ease;
+      }
+      .glow-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(245, 158, 11, 0.55);
+      }
+
+      .navy-btn {
+        background: #1a3a6e;
+        transition: all 0.2s ease;
+      }
+      .navy-btn:hover {
+        background: #2550a0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 58, 110, 0.3);
+      }
+
+      .section-pill {
+        display: inline-block;
+        background: #e8eef8;
+        color: #1a3a6e;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+      }
+
+      .nav-link {
+        transition: color 0.15s ease;
+      }
+      .nav-link:hover {
+        color: #fff;
+      }
+      .nav-link.active {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      #mobile-menu {
+        display: none;
+      }
+      #mobile-menu.open {
+        display: block;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-anim {
+        animation: fadeUp 0.7s ease both;
+      }
+      .hero-anim-2 {
+        animation: fadeUp 0.7s 0.15s ease both;
+      }
+      .hero-anim-3 {
+        animation: fadeUp 0.7s 0.3s ease both;
+      }
+    </style>
   </head>
-  <body>
-    <header>
-      <div class="container nav">
-        <div class="brand">Axeron Technologies</div>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="services.html">Services</a>
-          <a href="technologies.html">Technologies</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero-v2">
-      <div class="container hero-inner">
-        <div class="hero-rail"></div>
-
-        <div class="hero-content">
-          <span class="eyebrow">Software Systems</span>
-          <h1>
-            Built for Scale.<br />
-            <span>Designed for Reality.</span>
-          </h1>
-          <p>
-            Axeron Technologies designs and engineers scalable software systems
-            that support real-world business operations, growth, and complexity.
-          </p>
-
-          <div class="hero-actions">
-            <a href="contact.html" class="btn primary">Start a Conversation</a>
-            <a href="services.html" class="btn ghost">Explore Services</a>
+  <body class="font-sans text-gray-800 antialiased">
+    <!-- ═══════════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════════ -->
+    <nav
+      class="sticky top-0 z-50 border-b border-white/10"
+      style="background: #0f2447"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-3 group">
+          <span class="text-2xl">♟️</span>
+          <div>
+            <span class="text-white text-lg font-black tracking-tight"
+              >Axeron</span
+            >
+            <span class="text-blue-300 text-lg font-light"> Technologies</span>
           </div>
-        </div>
-
-        <div class="hero-atmosphere"></div>
-      </div>
-    </section>
-
-    <!-- WHO WE HELP -->
-    <section class="section anchor">
-      <div class="container anchor-grid">
-        <div class="anchor-line"></div>
-        <div>
-          <h2>Who We Work With</h2>
-          <p>
-            We partner with startups, growing businesses, and established
-            organizations that rely on software to run core operations.
-          </p>
-          <p>
-            Our clients typically face challenges around scalability, manual
-            processes, system fragmentation, or legacy software that no longer
-            supports growth.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CAPABILITIES -->
-    <section class="section">
-      <div class="container">
-        <span class="eyebrow">Capabilities</span>
-        <h2>What We Build</h2>
-
-        <div class="capability-grid">
-          <div class="capability">
-            <div class="cap-rail"></div>
-            <h3>Custom Software Systems</h3>
-            <p>
-              We design custom applications tailored to your workflows, data
-              models, and operational needs. Systems are architected for
-              maintainability and long-term evolution.
-            </p>
-          </div>
-
-          <div class="capability">
-            <div class="cap-rail"></div>
-            <h3>Business Process Automation</h3>
-            <p>
-              Manual and repetitive processes are automated using reliable,
-              well-tested workflows that improve efficiency, accuracy, and
-              visibility across teams.
-            </p>
-          </div>
-
-          <div class="capability">
-            <div class="cap-rail"></div>
-            <h3>System & Payment Integrations</h3>
-            <p>
-              We integrate payment gateways, third-party platforms, and internal
-              services into a unified system that eliminates data silos.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW WE WORK -->
-    <section class="section anchor">
-      <div class="container anchor-grid">
-        <div class="anchor-line"></div>
-        <div>
-          <h2>How We Work</h2>
-          <p>
-            Our approach focuses on clarity, structure, and accountability.
-            Every project follows a disciplined process to ensure predictable
-            outcomes and long-term value.
-          </p>
-
-          <ul style="margin-top: 24px; line-height: 1.8">
-            <li>
-              <strong>Understand:</strong> Deep dive into business workflows and
-              goals
-            </li>
-            <li>
-              <strong>Design:</strong> Architecture planned for scalability and
-              resilience
-            </li>
-            <li>
-              <strong>Build:</strong> Clean, testable, production-ready code
-            </li>
-            <li>
-              <strong>Support:</strong> Ongoing improvements and system
-              evolution
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- TECHNOLOGY DEPTH -->
-    <section class="section">
-      <div class="container">
-        <span class="eyebrow">Technology</span>
-        <h2>Built on Proven, Scalable Technology</h2>
-        <p>
-          We use mature, well-supported technologies chosen for stability,
-          performance, and long-term support.
-        </p>
-
-        <p>
-          Our stack commonly includes Java-based backend systems, modern
-          JavaScript frameworks, relational databases, and cloud-ready
-          deployment architectures.
-        </p>
-      </div>
-    </section>
-
-    <!-- PHILOSOPHY -->
-    <section class="section philosophy">
-      <div class="container">
-        <blockquote>
-          “Good software feels invisible.<br />
-          Great software feels inevitable.”
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section cta">
-      <div class="container">
-        <h2>Let’s Build Software That Grows With You</h2>
-        <p>
-          If you’re planning or improving systems meant to scale, we’re ready
-          for a thoughtful discussion.
-        </p>
-        <a href="mailto:axerontechnologies@gmail.com" class="btn primary">
-          axerontechnologies@gmail.com
         </a>
+        <div
+          class="hidden md:flex items-center gap-7 text-sm font-medium text-blue-200"
+        >
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href="#contact"
+            class="hidden sm:block glow-btn text-white text-sm font-bold px-5 py-2.5 rounded-xl"
+          >
+            Talk to Us →
+          </a>
+          <button
+            class="md:hidden text-white p-2"
+            onclick="
+              document.getElementById('mobile-menu').classList.toggle('open')
+            "
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="md:hidden px-6 pb-5 space-y-1 border-t border-white/10 pt-4"
+        style="background: #0f2447"
+      >
+        <a href="index.html" class="block text-white font-semibold py-2"
+          >Home</a
+        >
+        <a href="#services" class="block text-blue-200 hover:text-white py-2"
+          >Services</a
+        >
+        <a href="#products" class="block text-blue-200 hover:text-white py-2"
+          >Products</a
+        >
+        <a href="#about" class="block text-blue-200 hover:text-white py-2"
+          >About</a
+        >
+        <a href="#contact" class="block text-blue-200 hover:text-white py-2"
+          >Contact</a
+        >
+        <a
+          href="#contact"
+          class="block glow-btn text-white font-bold px-5 py-2.5 rounded-xl text-center text-sm mt-3"
+          >Talk to Us →</a
+        >
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="gradient-hero text-white pt-24 pb-20 px-6">
+      <div class="max-w-5xl mx-auto text-center">
+        <div
+          class="hero-anim inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium text-blue-200 mb-8"
+        >
+          🛠️ Custom software for real businesses
+        </div>
+        <h1
+          class="hero-anim-2 text-4xl md:text-6xl font-extrabold leading-tight mb-6 tracking-tight"
+        >
+          We Build Software<br />
+          <span style="color: #fbbf24">That Works for Your Business</span>
+        </h1>
+        <p
+          class="hero-anim-3 text-xl text-blue-200 max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          Axeron Technologies designs and delivers purpose-built web
+          applications, management systems, and SaaS products — crafted
+          precisely around how your business actually operates.
+        </p>
+        <div
+          class="hero-anim-3 flex flex-col sm:flex-row gap-4 justify-center mb-10"
+        >
+          <a
+            href="#services"
+            class="glow-btn text-white font-bold px-8 py-4 rounded-xl text-lg"
+          >
+            Our Services →
+          </a>
+          <a
+            href="#contact"
+            class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-lg transition"
+          >
+            Talk to Us
+          </a>
+        </div>
+        <p class="text-sm text-blue-300">
+          Self-hosted delivery &nbsp;·&nbsp; 10+ years experience &nbsp;·&nbsp;
+          End-to-end support
+        </p>
       </div>
     </section>
 
-    <footer>
-      <p><strong>Axeron Technologies</strong> · Built for Scale</p>
-      <p>📞 9313018580</p>
+    <!-- ═══════════════════════════════════════════
+         SERVICES
+    ═══════════════════════════════════════════ -->
+    <section id="services" class="bg-white py-24 px-6">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+          <div class="section-pill">What We Do</div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-4">
+            Software Services for Any Business
+          </h2>
+          <p class="text-gray-500 max-w-2xl mx-auto text-base">
+            We take your operational challenge and turn it into reliable,
+            maintainable software. From greenfield products to API integrations.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-8 border border-blue-100 bg-blue-50">
+            <div class="text-3xl mb-4">🖥️</div>
+            <h3 class="font-bold text-xl text-navy mb-2">
+              Custom Web Application Development
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              We build production-ready web applications tailored to your
+              workflow — from internal management tools to customer-facing
+              portals. Java + Spring Boot backend, React frontend, deployed on
+              your infrastructure.
+            </p>
+          </div>
+          <div class="rounded-2xl p-8 border border-green-100 bg-green-50">
+            <div class="text-3xl mb-4">📦</div>
+            <h3 class="font-bold text-xl text-navy mb-2">
+              SaaS &amp; Product Development
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Have a product idea? We architect, build, and deploy it.
+              Multi-tenant systems, billing integrations, role-based access,
+              reporting — end-to-end from idea to a live, licensed product.
+            </p>
+          </div>
+          <div class="rounded-2xl p-8 border border-purple-100 bg-purple-50">
+            <div class="text-3xl mb-4">🔗</div>
+            <h3 class="font-bold text-xl text-navy mb-2">
+              API Design &amp; Integration
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              REST API design, third-party integrations, payment gateways, email
+              automation, and data pipelines. We connect your systems so they
+              work as one.
+            </p>
+          </div>
+          <div class="rounded-2xl p-8 border border-yellow-100 bg-yellow-50">
+            <div class="text-3xl mb-4">🏗️</div>
+            <h3 class="font-bold text-xl text-navy mb-2">
+              Software Architecture &amp; Consulting
+            </h3>
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Starting a new system or improving an existing one? We advise on
+              architecture, database design, deployment strategy, and tech stack
+              — so you build something that scales.
+            </p>
+          </div>
+        </div>
+        <div class="mt-10 text-center">
+          <a
+            href="#contact"
+            class="glow-btn text-white font-bold px-8 py-4 rounded-xl text-base inline-block"
+            >Discuss Your Project →</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRODUCTS
+    ═══════════════════════════════════════════ -->
+    <section
+      id="products"
+      style="background: #0f2447"
+      class="py-24 px-6 text-white"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <div
+            class="inline-block bg-white/10 border border-white/20 text-blue-200 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4"
+          >
+            Our Products
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+            Ready-to-Deploy Software
+          </h2>
+          <p class="text-blue-300 max-w-xl mx-auto">
+            Industry-specific software built to be deployed on your own server
+            and licensed to your business. No SaaS lock-in — your data stays
+            with you.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Product 1: Chess Attendance & Billing System -->
+          <div
+            class="bg-white/10 border border-white/25 rounded-2xl p-7 flex flex-col"
+          >
+            <div class="text-3xl mb-3">♟️</div>
+            <div
+              class="inline-block bg-green-500/20 text-green-300 text-xs font-bold px-2.5 py-1 rounded-full mb-3 w-fit"
+            >
+              ✓ Live
+            </div>
+            <h3 class="font-extrabold text-lg mb-2">
+              Chess Attendance &amp; Billing System
+            </h3>
+            <p class="text-blue-300 text-sm leading-relaxed mb-5 flex-1">
+              Complete management platform for chess academies — attendance,
+              billing, student portal, coach reports, and multi-branch support.
+              Deployed on your server.
+            </p>
+            <div class="flex gap-2 flex-wrap">
+              <a
+                href="chess-attendance-billing-system.html"
+                class="glow-btn text-white text-sm font-bold px-4 py-2 rounded-xl"
+                >View Product →</a
+              >
+              <a
+                href="pricing.html"
+                class="bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold px-4 py-2 rounded-xl transition"
+                >Pricing</a
+              >
+            </div>
+          </div>
+          <!-- Product 2: Sports Academy Manager -->
+          <div
+            class="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col"
+          >
+            <div class="text-3xl mb-3">🏅</div>
+            <div
+              class="inline-block bg-yellow-500/20 text-yellow-300 text-xs font-bold px-2.5 py-1 rounded-full mb-3 w-fit"
+            >
+              Coming Soon
+            </div>
+            <h3 class="font-extrabold text-lg mb-2">Sports Academy Manager</h3>
+            <p class="text-blue-300 text-sm leading-relaxed mb-5 flex-1">
+              Attendance, batch management, billing, and student portals for any
+              sports coaching academy — badminton, tennis, swimming, martial
+              arts, and more.
+            </p>
+            <div>
+              <a
+                href="#contact"
+                class="bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold px-4 py-2 rounded-xl inline-block transition"
+                >Get Notified</a
+              >
+            </div>
+          </div>
+          <!-- Product 3: Tuition Centre Pro -->
+          <div
+            class="bg-white/5 border border-white/10 rounded-2xl p-7 flex flex-col"
+          >
+            <div class="text-3xl mb-3">📚</div>
+            <div
+              class="inline-block bg-yellow-500/20 text-yellow-300 text-xs font-bold px-2.5 py-1 rounded-full mb-3 w-fit"
+            >
+              Coming Soon
+            </div>
+            <h3 class="font-extrabold text-lg mb-2">Tuition Centre Pro</h3>
+            <p class="text-blue-300 text-sm leading-relaxed mb-5 flex-1">
+              Complete management for tuition and coaching institutes —
+              subjects, teachers, attendance, fee collection, and student
+              notifications all in one place.
+            </p>
+            <div>
+              <a
+                href="#contact"
+                class="bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold px-4 py-2 rounded-xl inline-block transition"
+                >Get Notified</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         ABOUT AXERON
+    ═══════════════════════════════════════════ -->
+    <section id="about" class="bg-white py-20 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-14 items-center">
+          <div>
+            <div class="section-pill">About Us</div>
+            <h2 class="text-3xl font-extrabold text-navy mb-5">
+              Built by People Who Love Building Software
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-4">
+              Axeron Technologies is a software development company focused on
+              building reliable, purpose-built applications for businesses. We
+              work with clients to understand how they actually operate — then
+              build software that fits that reality.
+            </p>
+            <p class="text-gray-600 leading-relaxed mb-6">
+              Our approach is practical: no unnecessary complexity, no generic
+              templates, no bloated frameworks. Every system we deliver is
+              designed to be maintainable, self-hosted, and built for the long
+              term.
+            </p>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs flex-shrink-0"
+                  >✓</span
+                >
+                <span class="text-gray-700 text-sm"
+                  >10+ years of software engineering experience</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs flex-shrink-0"
+                  >✓</span
+                >
+                <span class="text-gray-700 text-sm"
+                  >Self-hosted delivery — your data stays on your
+                  infrastructure</span
+                >
+              </div>
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs flex-shrink-0"
+                  >✓</span
+                >
+                <span class="text-gray-700 text-sm"
+                  >End-to-end: architecture, development, deployment,
+                  support</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div
+              class="rounded-2xl p-6 text-center border border-blue-100"
+              style="background: #f0f4fb"
+            >
+              <div class="text-2xl font-black text-navy">Full-Stack</div>
+              <div class="text-gray-500 text-xs mt-1">End-to-end delivery</div>
+            </div>
+            <div
+              class="rounded-2xl p-6 text-center border border-blue-100"
+              style="background: #f0f4fb"
+            >
+              <div class="text-4xl font-black text-navy">10+</div>
+              <div class="text-gray-500 text-xs mt-1">
+                Years in software industry
+              </div>
+            </div>
+            <div
+              class="rounded-2xl p-6 text-center border border-yellow-200"
+              style="background: #fef3c7"
+            >
+              <div class="text-4xl font-black" style="color: #b07d10">1</div>
+              <div class="text-gray-500 text-xs mt-1">Day deployment</div>
+            </div>
+            <div
+              class="rounded-2xl p-6 text-center border border-yellow-200"
+              style="background: #fef3c7"
+            >
+              <div class="text-4xl font-black" style="color: #b07d10">80%</div>
+              <div class="text-gray-500 text-xs mt-1">Less manual work</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CTA / CONTACT
+    ═══════════════════════════════════════════ -->
+    <section id="contact" class="gradient-hero text-white py-24 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+          Have a Project in Mind?
+        </h2>
+        <p class="text-blue-200 text-lg mb-10 max-w-xl mx-auto leading-relaxed">
+          Tell us what you're trying to build or the problem you're trying to
+          solve. We'll come back with a clear plan — no jargon, no commitment.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto mb-8">
+          <a
+            href="mailto:kewin.thanki@gmail.com?subject=Chess Attendance & Billing System Demo Request"
+            class="bg-white/10 border border-white/20 rounded-2xl p-6 flex items-center gap-4 hover:bg-white/20 transition group text-left"
+          >
+            <div
+              class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-2xl group-hover:bg-white/25 transition flex-shrink-0"
+            >
+              📧
+            </div>
+            <div>
+              <div
+                class="text-xs text-blue-300 uppercase font-semibold tracking-wide"
+              >
+                Email
+              </div>
+              <div class="font-semibold text-sm">kewin.thanki@gmail.com</div>
+            </div>
+          </a>
+          <a
+            href="tel:+919426118580"
+            class="bg-white/10 border border-white/20 rounded-2xl p-6 flex items-center gap-4 hover:bg-white/20 transition group text-left"
+          >
+            <div
+              class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-2xl group-hover:bg-white/25 transition flex-shrink-0"
+            >
+              📱
+            </div>
+            <div>
+              <div
+                class="text-xs text-blue-300 uppercase font-semibold tracking-wide"
+              >
+                WhatsApp / Phone
+              </div>
+              <div class="font-semibold text-sm">+91 94261 18580</div>
+            </div>
+          </a>
+        </div>
+        <a
+          href="mailto:kewin.thanki@gmail.com?subject=Chess Attendance & Billing System Demo Request"
+          class="glow-btn text-white font-bold px-10 py-4 rounded-xl text-base inline-block"
+        >
+          Book a Free Demo →
+        </a>
+        <p class="mt-4 text-blue-300 text-sm">
+          Response within 4 hours · Mon–Sat
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer
+      style="background: #0a1e3d"
+      class="text-blue-300 text-sm py-10 px-6"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8"
+        >
+          <div class="max-w-sm">
+            <div
+              class="flex items-center gap-2 text-white font-bold text-base mb-3"
+            >
+              <span class="text-xl">♟️</span> Axeron Technologies
+            </div>
+            <p class="text-blue-400 text-xs leading-relaxed">
+              Axeron Technologies builds purpose-built web applications and
+              management systems for businesses. Chess Attendance &amp; Billing
+              System is our flagship product.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-8 text-xs">
+            <div>
+              <div
+                class="text-white font-semibold mb-3 uppercase tracking-wider text-xs"
+              >
+                Services
+              </div>
+              <div class="space-y-2">
+                <a href="#services" class="block hover:text-white transition"
+                  >Web App Development</a
+                >
+                <a href="#services" class="block hover:text-white transition"
+                  >SaaS &amp; Product Dev</a
+                >
+                <a href="#services" class="block hover:text-white transition"
+                  >API Integration</a
+                >
+                <a href="#services" class="block hover:text-white transition"
+                  >Consulting</a
+                >
+              </div>
+            </div>
+            <div>
+              <div
+                class="text-white font-semibold mb-3 uppercase tracking-wider text-xs"
+              >
+                Products
+              </div>
+              <div class="space-y-2">
+                <a
+                  href="chess-attendance-billing-system.html"
+                  class="block hover:text-white transition"
+                  >Chess Attendance &amp; Billing</a
+                >
+                <a href="pricing.html" class="block hover:text-white transition"
+                  >Pricing</a
+                >
+                <a href="#about" class="block hover:text-white transition"
+                  >About</a
+                >
+                <a href="#contact" class="block hover:text-white transition"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <div class="text-blue-400 text-xs">
+            © 2026 Axeron Technologies. All rights reserved.
+          </div>
+          <div class="text-blue-400 text-xs">
+            Built and maintained by Kevin Thanki · Ahmedabad, India
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>

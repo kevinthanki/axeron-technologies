@@ -1,0 +1,1814 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Chess Attendance & Billing System — Pricing & Plans for Chess Academies |
+      Axeron Technologies
+    </title>
+    <meta
+      name="description"
+      content="Simple, transparent pricing for chess academies. License-based software. Self-hosted on your server. Your data stays with you."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              navy: {
+                DEFAULT: "#1a3a6e",
+                50: "#f0f4fb",
+                100: "#dce6f5",
+                dark: "#0f2447",
+                light: "#2550a0",
+              },
+              gold: {
+                DEFAULT: "#b07d10",
+                light: "#d4960f",
+                bright: "#f59e0b",
+                pale: "#fef3c7",
+              },
+            },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
+            boxShadow: {
+              "glow-gold": "0 0 0 3px #f59e0b40, 0 20px 60px #f59e0b20",
+              card: "0 4px 24px rgba(15,36,71,0.08)",
+              "card-hover": "0 12px 40px rgba(15,36,71,0.16)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: #f8fafd;
+      }
+
+      .gradient-hero {
+        background-color: #0a1e3d;
+        background-image:
+          linear-gradient(
+            45deg,
+            rgba(255, 255, 255, 0.025) 25%,
+            transparent 25%
+          ),
+          linear-gradient(
+            -45deg,
+            rgba(255, 255, 255, 0.025) 25%,
+            transparent 25%
+          ),
+          linear-gradient(
+            45deg,
+            transparent 75%,
+            rgba(255, 255, 255, 0.025) 75%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 75%,
+            rgba(255, 255, 255, 0.025) 75%
+          ),
+          linear-gradient(
+            145deg,
+            #0a1e3d 0%,
+            #0f2447 40%,
+            #1a3a6e 80%,
+            #1e4585 100%
+          );
+        background-size:
+          40px 40px,
+          40px 40px,
+          40px 40px,
+          40px 40px,
+          100% 100%;
+        background-position:
+          0 0,
+          0 20px,
+          20px -20px,
+          -20px 0px,
+          center;
+      }
+
+      .plan-card {
+        transition:
+          transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.28s ease;
+        transform-origin: bottom center;
+      }
+      .plan-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 24px 60px rgba(15, 36, 71, 0.18);
+      }
+      .plan-popular {
+        box-shadow:
+          0 0 0 3px #f59e0b,
+          0 24px 60px rgba(245, 158, 11, 0.2);
+        z-index: 2;
+      }
+      .plan-popular:hover {
+        box-shadow:
+          0 0 0 3px #f59e0b,
+          0 32px 70px rgba(245, 158, 11, 0.28);
+      }
+
+      /* Billing toggle */
+      .tab-btn {
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        background: transparent;
+        color: #64748b;
+      }
+      .tab-btn.active {
+        background: #1a3a6e;
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(26, 58, 110, 0.3);
+      }
+      .tab-btn:not(.active):hover {
+        color: #1a3a6e;
+        background: #e8eef8;
+      }
+
+      /* Pricing display */
+      .price-display {
+        display: none;
+      }
+      .price-display.visible {
+        display: flex;
+      }
+
+      /* Feature check / cross */
+      .feat-yes {
+        color: #16a34a;
+        font-weight: 700;
+      }
+      .feat-no {
+        color: #cbd5e1;
+        font-weight: 400;
+      }
+
+      /* Accordion FAQ */
+      details > summary {
+        list-style: none;
+        cursor: pointer;
+      }
+      details > summary::-webkit-details-marker {
+        display: none;
+      }
+      details[open] summary .arrow {
+        transform: rotate(180deg);
+      }
+      .arrow {
+        transition: transform 0.2s ease;
+        display: inline-block;
+      }
+      details[open] > .faq-body {
+        animation: fadeDown 0.2s ease;
+      }
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Comparison table sticky header */
+      .compare-table th {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      /* Ribbon for popular */
+      .ribbon {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        color: white;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 6px 20px 6px 12px;
+        border-radius: 0 14px 0 14px;
+      }
+
+      @media (max-width: 768px) {
+        .plan-cards-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .compare-wrap {
+          overflow-x: auto;
+        }
+      }
+
+      .badge-new {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: linear-gradient(135deg, #fef3c7, #fde68a);
+        color: #92400e;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        border: 1px solid #fcd34d;
+      }
+
+      .section-pill {
+        display: inline-block;
+        background: #e8eef8;
+        color: #1a3a6e;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 5px 14px;
+        border-radius: 20px;
+        margin-bottom: 14px;
+      }
+
+      .glow-btn {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 4px 20px rgba(245, 158, 11, 0.45);
+        transition: all 0.2s ease;
+      }
+      .glow-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 28px rgba(245, 158, 11, 0.55);
+      }
+
+      .navy-btn {
+        background: #1a3a6e;
+        transition: all 0.2s ease;
+      }
+      .navy-btn:hover {
+        background: #2550a0;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 58, 110, 0.3);
+      }
+
+      #mobile-menu {
+        display: none;
+      }
+      #mobile-menu.open {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-gray-800 antialiased">
+    <!-- ═══════════════════════════════════════════
+         NAVIGATION
+    ═══════════════════════════════════════════ -->
+    <nav
+      class="sticky top-0 z-50 border-b border-white/10"
+      style="background: #0f2447"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-3">
+          <span class="text-2xl">♟️</span>
+          <div>
+            <span class="text-white text-lg font-black tracking-tight"
+              >Axeron</span
+            >
+            <span class="text-blue-300 text-lg font-light"> Technologies</span>
+          </div>
+        </a>
+        <div
+          class="hidden md:flex items-center gap-7 text-sm font-medium text-blue-200"
+        >
+          <a href="index.html" class="hover:text-white transition">Home</a>
+          <a href="index.html#services" class="hover:text-white transition"
+            >Services</a
+          >
+          <a href="index.html#products" class="text-white font-semibold"
+            >Products</a
+          >
+          <a href="index.html#about" class="hover:text-white transition"
+            >About</a
+          >
+          <a href="#contact" class="hover:text-white transition">Contact</a>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href="#contact"
+            class="hidden sm:block glow-btn text-white text-sm font-bold px-5 py-2.5 rounded-xl"
+          >
+            Talk to Us →
+          </a>
+          <button
+            class="md:hidden text-white p-2"
+            onclick="
+              document.getElementById('mobile-menu').classList.toggle('open')
+            "
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div
+        id="mobile-menu"
+        class="md:hidden px-6 pb-5 space-y-1 border-t border-white/10 pt-4"
+        style="background: #0f2447"
+      >
+        <a href="index.html" class="block text-blue-200 hover:text-white py-2"
+          >Home</a
+        >
+        <a
+          href="index.html#services"
+          class="block text-blue-200 hover:text-white py-2"
+          >Services</a
+        >
+        <a
+          href="index.html#products"
+          class="block text-white font-semibold py-2"
+          >Products</a
+        >
+        <a
+          href="index.html#about"
+          class="block text-blue-200 hover:text-white py-2"
+          >About</a
+        >
+        <a href="#contact" class="block text-blue-200 hover:text-white py-2"
+          >Contact</a
+        >
+        <a
+          href="#contact"
+          class="block glow-btn text-white font-bold px-5 py-2.5 rounded-xl text-center text-sm mt-3"
+          >Talk to Us →</a
+        >
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="gradient-hero text-white pt-20 pb-16 px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <div class="badge-new mb-6">
+          🎁 &nbsp;Founding Customer Offer — 30% off any plan, first 20
+          academies only
+        </div>
+        <h1
+          class="text-4xl md:text-5xl font-extrabold leading-tight mb-5 tracking-tight"
+        >
+          One Price. Your Software.<br />
+          <span style="color: #fbbf24">No Monthly Surprises.</span>
+        </h1>
+        <p class="text-lg text-blue-200 max-w-xl mx-auto leading-relaxed mb-8">
+          License-based software that runs on your own server. Your data lives
+          with you — not on our cloud. Choose the plan that fits your academy
+          size.
+        </p>
+        <!-- Key Trust Points -->
+        <div
+          class="flex flex-wrap justify-center gap-5 text-sm font-medium text-blue-200"
+        >
+          <span class="flex items-center gap-2">✅ Your data, your server</span>
+          <span class="flex items-center gap-2"
+            >✅ License-based, not SaaS</span
+          >
+          <span class="flex items-center gap-2"
+            >✅ Free updates for 2 years</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         BILLING TOGGLE
+    ═══════════════════════════════════════════ -->
+    <section id="plans" class="pt-16 pb-4 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="section-pill">Pricing Plans</div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-3">
+            Choose Your License
+          </h2>
+          <p class="text-gray-500 max-w-lg mx-auto text-base">
+            All plans include the complete software. The only difference is how
+            many students and branches you can manage.
+          </p>
+        </div>
+
+        <!-- Toggle buttons -->
+        <div class="flex justify-center mb-10">
+          <div
+            class="bg-white rounded-xl p-1.5 shadow-card border border-gray-100 flex gap-1 flex-wrap justify-center"
+          >
+            <button
+              class="tab-btn active"
+              onclick="setBilling('monthly')"
+              id="tab-monthly"
+            >
+              Monthly
+            </button>
+            <button
+              class="tab-btn"
+              onclick="setBilling('biannual')"
+              id="tab-biannual"
+            >
+              6 Months
+              <span
+                class="ml-1.5 text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full"
+                >Save 33%</span
+              >
+            </button>
+            <button
+              class="tab-btn"
+              onclick="setBilling('annual')"
+              id="tab-annual"
+            >
+              1 Year
+              <span
+                class="ml-1.5 text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full"
+                >Save 47%</span
+              >
+            </button>
+            <button
+              class="tab-btn"
+              onclick="setBilling('lifetime')"
+              id="tab-lifetime"
+            >
+              Lifetime
+              <span
+                class="ml-1.5 text-xs bg-yellow-100 text-yellow-700 font-bold px-2 py-0.5 rounded-full"
+                >Best Value</span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PLAN CARDS
+    ═══════════════════════════════════════════ -->
+    <section class="pb-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 plan-cards-grid items-end"
+        >
+          <!-- ── STARTER ── -->
+          <div
+            class="plan-card bg-white rounded-2xl p-8 border border-gray-200 relative"
+          >
+            <div class="mb-6">
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2"
+              >
+                STARTER
+              </div>
+              <h3 class="text-2xl font-extrabold text-navy mb-1">
+                For Small Academies
+              </h3>
+              <p class="text-gray-400 text-sm">
+                Solo coach or a small setup just getting organised
+              </p>
+            </div>
+
+            <!-- Prices -->
+            <div
+              class="price-display visible flex-col mb-6"
+              id="starter-monthly"
+            >
+              <div class="flex items-end gap-1">
+                <span class="text-5xl font-black text-navy">₹2,499</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per month · billed monthly</span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="starter-biannual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹9,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >for 6 months · <s class="text-gray-300">₹14,994</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹4,995</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="starter-annual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹15,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per year · <s class="text-gray-300">₹29,988</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹13,989</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="starter-lifetime">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹39,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >one-time · own it forever</span
+              >
+              <span class="text-xs text-blue-400 mt-1"
+                >Includes updates for 2 years</span
+              >
+            </div>
+
+            <!-- Limits -->
+            <div
+              class="bg-navy-50 rounded-xl px-4 py-3 mb-6 flex gap-6 text-center"
+              style="background: #f0f4fb"
+            >
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">50</div>
+                <div class="text-xs text-gray-500 font-medium">Students</div>
+              </div>
+              <div class="w-px bg-gray-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">1</div>
+                <div class="text-xs text-gray-500 font-medium">Branch</div>
+              </div>
+              <div class="w-px bg-gray-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">3</div>
+                <div class="text-xs text-gray-500 font-medium">Coaches</div>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Unlimited batches, sessions & attendance</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Invoice generation & billing</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Student login portal</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Attendance & basic reports</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Email support (48-hr response)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-no mt-0.5">✗</span
+                ><span class="text-gray-400">Scheduled email reports</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-no mt-0.5">✗</span
+                ><span class="text-gray-400">Automated fee reminders</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-no mt-0.5">✗</span
+                ><span class="text-gray-400">Coach revenue reporting</span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="block text-center navy-btn text-white font-bold py-3.5 rounded-xl text-sm"
+            >
+              Get Started →
+            </a>
+          </div>
+
+          <!-- ── PROFESSIONAL (Popular) ── -->
+          <div
+            class="plan-card plan-popular bg-white rounded-2xl p-8 border-2 border-yellow-400 relative md:-mt-4"
+          >
+            <div class="ribbon">Most Popular</div>
+            <div class="mb-6">
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-yellow-600 mb-2"
+              >
+                PROFESSIONAL
+              </div>
+              <h3 class="text-2xl font-extrabold text-navy mb-1">
+                For Growing Academies
+              </h3>
+              <p class="text-gray-400 text-sm">
+                Multiple coaches, branches, and serious operations
+              </p>
+            </div>
+
+            <div class="price-display visible flex-col mb-6" id="pro-monthly">
+              <div class="flex items-end gap-1">
+                <span class="text-5xl font-black text-navy">₹4,499</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per month · billed monthly</span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="pro-biannual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹19,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >for 6 months · <s class="text-gray-300">₹26,994</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹6,995</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="pro-annual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹29,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per year · <s class="text-gray-300">₹53,988</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹23,989</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="pro-lifetime">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹74,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >one-time · own it forever</span
+              >
+              <span class="text-xs text-blue-400 mt-1"
+                >Includes updates for 2 years</span
+              >
+            </div>
+
+            <div
+              class="bg-yellow-50 rounded-xl px-4 py-3 mb-6 flex gap-6 text-center"
+            >
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">150</div>
+                <div class="text-xs text-gray-500 font-medium">Students</div>
+              </div>
+              <div class="w-px bg-yellow-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">3</div>
+                <div class="text-xs text-gray-500 font-medium">Branches</div>
+              </div>
+              <div class="w-px bg-yellow-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">8</div>
+                <div class="text-xs text-gray-500 font-medium">Coaches</div>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Everything in Starter</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Coach revenue & session reports</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Scheduled email reports (auto)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Automated fee reminders</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Discount & wallet / credit system</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Multi-branch management</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Onboarding setup call included</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Priority email support (24-hr)</span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="block text-center glow-btn text-white font-bold py-3.5 rounded-xl text-sm"
+            >
+              Get Started →
+            </a>
+          </div>
+
+          <!-- ── ENTERPRISE ── -->
+          <div
+            class="plan-card bg-white rounded-2xl p-8 border border-gray-200 relative"
+          >
+            <div class="mb-6">
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-purple-500 mb-2"
+              >
+                ENTERPRISE
+              </div>
+              <h3 class="text-2xl font-extrabold text-navy mb-1">
+                For Large Operations
+              </h3>
+              <p class="text-gray-400 text-sm">
+                Multi-city academies, franchise networks, unlimited scale
+              </p>
+            </div>
+
+            <div class="price-display visible flex-col mb-6" id="ent-monthly">
+              <div class="flex items-end gap-1">
+                <span class="text-5xl font-black text-navy">₹7,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per month · billed monthly</span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="ent-biannual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹34,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >for 6 months · <s class="text-gray-300">₹47,994</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹12,995</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="ent-annual">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹54,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >per year · <s class="text-gray-300">₹95,988</s>
+                <span class="text-green-600 font-semibold ml-1"
+                  >save ₹40,989</span
+                ></span
+              >
+            </div>
+            <div class="price-display flex-col mb-6" id="ent-lifetime">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹1,29,999</span>
+              </div>
+              <span class="text-gray-400 text-sm mt-1"
+                >one-time · own it forever</span
+              >
+              <span class="text-xs text-blue-400 mt-1"
+                >Includes updates for 2 years</span
+              >
+            </div>
+
+            <div
+              class="bg-purple-50 rounded-xl px-4 py-3 mb-6 flex gap-6 text-center"
+            >
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-xs text-gray-500 font-medium">Students</div>
+              </div>
+              <div class="w-px bg-purple-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-xs text-gray-500 font-medium">Branches</div>
+              </div>
+              <div class="w-px bg-purple-200"></div>
+              <div class="flex-1">
+                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-xs text-gray-500 font-medium">Coaches</div>
+              </div>
+            </div>
+
+            <ul class="space-y-3 text-sm mb-8">
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Everything in Professional</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span
+                  >Enterprise-only custom branding (your logo & academy
+                  name)</span
+                >
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Custom domain setup included</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Student import from Google Sheets</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Report download (PDF)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Dedicated onboarding + data migration</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Phone support (Mon–Sat)</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Audit logs & incident tracking</span>
+              </li>
+            </ul>
+
+            <a
+              href="#contact"
+              class="block text-center navy-btn text-white font-bold py-3.5 rounded-xl text-sm"
+            >
+              Get Started →
+            </a>
+          </div>
+        </div>
+        <!-- /grid -->
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         COMPARISON TABLE
+    ═══════════════════════════════════════════ -->
+    <section id="compare" class="bg-white py-20 px-6 border-t border-gray-100">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="section-pill">Full Comparison</div>
+          <h2 class="text-3xl font-extrabold text-navy">What's in Each Plan</h2>
+        </div>
+        <div
+          class="compare-wrap rounded-2xl border border-gray-200 overflow-hidden shadow-card"
+        >
+          <table class="w-full compare-table text-sm">
+            <thead>
+              <tr class="bg-navy text-white" style="background: #1a3a6e">
+                <th class="text-left px-6 py-4 font-semibold w-2/5">Feature</th>
+                <th class="text-center px-4 py-4 font-semibold">Starter</th>
+                <th class="text-center px-4 py-4 font-semibold bg-yellow-600">
+                  Professional
+                </th>
+                <th class="text-center px-4 py-4 font-semibold">Enterprise</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="bg-gray-50">
+                <td
+                  colspan="4"
+                  class="px-6 py-2 text-xs font-bold uppercase tracking-widest text-gray-400"
+                >
+                  Capacity Limits
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Students</td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  50
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 font-semibold text-navy bg-yellow-50"
+                >
+                  150
+                </td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  Unlimited
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Branches</td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  1
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 font-semibold text-navy bg-yellow-50"
+                >
+                  3
+                </td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  Unlimited
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Coach logins</td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  3
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 font-semibold text-navy bg-yellow-50"
+                >
+                  8
+                </td>
+                <td class="text-center px-4 py-3.5 font-semibold text-navy">
+                  Unlimited
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Batches & Sessions</td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓ Unlimited
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓ Unlimited
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓ Unlimited
+                </td>
+              </tr>
+
+              <tr class="bg-gray-50">
+                <td
+                  colspan="4"
+                  class="px-6 py-2 text-xs font-bold uppercase tracking-widest text-gray-400"
+                >
+                  Core Features
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Attendance marking (per session)
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Student login portal</td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Invoice generation & tracking
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Flexible billing (per session / monthly / yearly)
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Basic attendance & payment reports
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+
+              <tr class="bg-gray-50">
+                <td
+                  colspan="4"
+                  class="px-6 py-2 text-xs font-bold uppercase tracking-widest text-gray-400"
+                >
+                  Advanced Features
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Coach revenue & sessions report
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Scheduled email reports (auto)
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Automated fee reminders
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Discount codes & wallet / credit system
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Custom branding (your logo & academy name)
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-gray-300 font-bold bg-yellow-50"
+                >
+                  ✗
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Report download (PDF)</td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Student import from Google Sheets
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-gray-300 font-bold bg-yellow-50"
+                >
+                  ✗
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+
+              <tr class="bg-gray-50">
+                <td
+                  colspan="4"
+                  class="px-6 py-2 text-xs font-bold uppercase tracking-widest text-gray-400"
+                >
+                  Support & Onboarding
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Setup & installation guide
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Email support response time
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-600">48 hrs</td>
+                <td class="text-center px-4 py-3.5 text-gray-600 bg-yellow-50">
+                  24 hrs
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-600">Same day</td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">Onboarding setup call</td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓ 30 min
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓ Dedicated
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Phone / WhatsApp support
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-gray-300 font-bold bg-yellow-50"
+                >
+                  ✗
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Free updates included for
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-600">
+                  License period
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-600 bg-yellow-50">
+                  License period
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-600">
+                  License period
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         WHAT'S INCLUDED
+    ═══════════════════════════════════════════ -->
+    <section
+      id="includes"
+      class="bg-navy py-20 px-6 text-white"
+      style="background: #1a3a6e"
+    >
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+          <div
+            class="inline-block bg-white/10 border border-white/20 text-blue-200 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4"
+          >
+            What's Included
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold">
+            Everything Built In. Nothing Extra to Buy.
+          </h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">♟️</div>
+            <h3 class="font-bold text-lg mb-2">Chess-Native Structure</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Batches organised by rating level (U800, U1200, U1600),
+              online/offline modes, flexible session schedules. Built the way
+              chess coaches actually think.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">✅</div>
+            <h3 class="font-bold text-lg mb-2">One-Tap Attendance</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Coaches mark PRESENT / ABSENT / LATE in under 60 seconds per
+              batch. Timestamped, logged, and accessible to the admin.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">💰</div>
+            <h3 class="font-bold text-lg mb-2">Flexible Billing Engine</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Per session, monthly, yearly — per batch, per student. Apply
+              discount codes and custom fee overrides. Invoices auto-generate.
+              No more manual calculations.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">👩‍💻</div>
+            <h3 class="font-bold text-lg mb-2">Student Portal</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Students log in to see their schedule, attendance history, and
+              invoice statements. Eliminates "Did I attend?" queries to the
+              coach entirely.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">📊</div>
+            <h3 class="font-bold text-lg mb-2">Powerful Reports</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Attendance per student, revenue per batch, sessions per coach,
+              outstanding payments. Pull any report instantly or configure
+              automated scheduled email delivery.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">🔒</div>
+            <h3 class="font-bold text-lg mb-2">Roles & Permissions</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Admin, Manager, Coach, Student — each role sees only what it
+              should. Full audit log of every action. Enterprise-grade security
+              at academy scale.
+            </p>
+          </div>
+        </div>
+        <div class="mt-12 bg-white/8 border border-white/15 rounded-2xl p-8">
+          <h3 class="font-bold text-lg mb-5 text-center">
+            Things You Will NOT Pay Extra For
+          </h3>
+          <div
+            class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm text-blue-200"
+          >
+            <div class="flex flex-col items-center gap-2">
+              <span class="text-2xl">🚫</span>Per-student fees
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <span class="text-2xl">🚫</span>Data storage limits
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <span class="text-2xl">🚫</span>Report downloads
+            </div>
+            <div class="flex flex-col items-center gap-2">
+              <span class="text-2xl">🚫</span>Extra user logins
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         AMC / RENEWAL
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white py-20 px-6 border-t border-gray-100">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="section-pill">After Your License Ends</div>
+          <h2 class="text-3xl font-extrabold text-navy mb-3">
+            Annual Maintenance (AMC)
+          </h2>
+          <p class="text-gray-500 max-w-xl mx-auto">
+            Renew your license to keep access. AMC covers updates, bug fixes,
+            and continued support after your initial license period.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-7 text-center"
+          >
+            <div
+              class="text-sm font-bold uppercase tracking-widest text-blue-400 mb-2"
+            >
+              Starter AMC
+            </div>
+            <div class="text-3xl font-black text-navy mb-1">
+              ₹4,999<span class="text-base font-normal text-gray-400"
+                >/year</span
+              >
+            </div>
+            <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Security & bug fixes
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Compatibility updates
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Email support
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-7 text-center"
+          >
+            <div
+              class="text-sm font-bold uppercase tracking-widest text-blue-400 mb-2"
+            >
+              Professional AMC
+            </div>
+            <div class="text-3xl font-black text-navy mb-1">
+              ₹8,999<span class="text-base font-normal text-gray-400"
+                >/year</span
+              >
+            </div>
+            <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Everything in Starter AMC
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>New feature updates
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Priority email support
+              </li>
+            </ul>
+          </div>
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-7 text-center"
+          >
+            <div
+              class="text-sm font-bold uppercase tracking-widest text-blue-400 mb-2"
+            >
+              Enterprise AMC
+            </div>
+            <div class="text-3xl font-black text-navy mb-1">
+              ₹14,999<span class="text-base font-normal text-gray-400"
+                >/year</span
+              >
+            </div>
+            <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Everything in Pro AMC
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Phone / WhatsApp support
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-green-500">✓</span>Dedicated response SLA
+              </li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-center text-gray-400 text-sm mt-6">
+          ℹ️ AMC renewal restores and maintains your access along with updates
+          and support.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FAQ
+    ═══════════════════════════════════════════ -->
+    <section id="faq" class="bg-gray-50 py-20 px-6 border-t border-gray-100">
+      <div class="max-w-3xl mx-auto">
+        <div class="text-center mb-12">
+          <div class="section-pill">FAQ</div>
+          <h2 class="text-3xl font-extrabold text-navy">
+            Frequently Asked Questions
+          </h2>
+        </div>
+        <div class="space-y-3">
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              What do I need to run this software?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              A Linux server (VPS) with at least 2 vCPU and 4 GB RAM, Docker
+              installed, and a domain name. If you don't have any of this, we'll
+              help you set it up. A basic VPS costs ₹500–1,500/month on
+              DigitalOcean, Hetzner, or any Indian provider. We handle the
+              deployment.
+            </div>
+          </details>
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              Do I need a technical background to manage this?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              No. Once it's installed, the day-to-day use requires no technical
+              knowledge. The admin dashboard is a web interface — like using any
+              website. For the initial installation, we do it for you during the
+              onboarding call.
+            </div>
+          </details>
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              What happens when my license expires?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              Access to the software is suspended when your license period ends.
+              Your data remains safe on your server. To restore access, simply
+              renew your license. We'll notify you before expiry so there's no
+              unexpected downtime.
+            </div>
+          </details>
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              Can I import my existing student data from Excel or Google Sheets?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              Yes, on the Enterprise plan we include a full data migration
+              service. For Starter and Professional, you can add students
+              manually (takes 2–3 minutes per student) or we can quote a
+              one-time data migration service for a small fee.
+            </div>
+          </details>
+
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              Does the Lifetime license cover future major versions?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              The Lifetime license covers all updates within the current major
+              version (v1.x) for 2 years. If a future major version (v2) is
+              released, existing lifetime holders will receive a significant
+              upgrade discount. You will never be forced to pay for updates to
+              continue using what you already purchased.
+            </div>
+          </details>
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              Can I upgrade from Starter to Professional later?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              Yes. You pay the price difference for the remaining period of your
+              license. Your data stays intact — it's the same software, just
+              with the higher tier unlocked.
+            </div>
+          </details>
+          <details class="bg-white rounded-2xl border border-gray-200 group">
+            <summary
+              class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
+            >
+              Is there a free trial?
+              <span class="arrow text-gray-400 text-xl ml-4">▾</span>
+            </summary>
+            <div
+              class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
+            >
+              We offer a live demo tailored to your academy's structure instead
+              of a self-serve trial — this is more useful than clicking around
+              an unfamiliar demo environment. Book a 15-minute call and we'll
+              show you exactly how it works for your batches and student count.
+              Alternatively, we can set up a 14-day trial instance on request.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT / CTA
+    ═══════════════════════════════════════════ -->
+    <section id="contact" class="gradient-hero text-white py-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+            Ready to Get Started?
+          </h2>
+          <p class="text-blue-200 text-lg max-w-xl mx-auto">
+            Book a free 15-minute demo and see the software running with your
+            academy's own batch structure before you buy anything.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-8">
+            <h3 class="font-bold text-lg mb-6">Talk to Us Directly</h3>
+            <div class="space-y-5">
+              <a
+                href="mailto:kewin.thanki@gmail.com"
+                class="flex items-center gap-4 group"
+              >
+                <div
+                  class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/25 transition"
+                >
+                  📧
+                </div>
+                <div>
+                  <div
+                    class="text-xs text-blue-300 uppercase font-semibold tracking-wide"
+                  >
+                    Email
+                  </div>
+                  <div
+                    class="font-semibold group-hover:text-yellow-300 transition"
+                  >
+                    kewin.thanki@gmail.com
+                  </div>
+                </div>
+              </a>
+              <a href="tel:+919426118580" class="flex items-center gap-4 group">
+                <div
+                  class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-xl group-hover:bg-white/25 transition"
+                >
+                  📱
+                </div>
+                <div>
+                  <div
+                    class="text-xs text-blue-300 uppercase font-semibold tracking-wide"
+                  >
+                    WhatsApp / Phone
+                  </div>
+                  <div
+                    class="font-semibold group-hover:text-yellow-300 transition"
+                  >
+                    +91 94261 18580
+                  </div>
+                </div>
+              </a>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-white/15 rounded-xl flex items-center justify-center text-xl"
+                >
+                  🕐
+                </div>
+                <div>
+                  <div
+                    class="text-xs text-blue-300 uppercase font-semibold tracking-wide"
+                  >
+                    Response Time
+                  </div>
+                  <div class="font-semibold">Within 4 hours (Mon–Sat)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white/10 border border-white/20 rounded-2xl p-8">
+            <h3 class="font-bold text-lg mb-6">What Happens Next</h3>
+            <ol class="space-y-4">
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 mt-0.5"
+                  style="background: #f59e0b"
+                >
+                  1
+                </div>
+                <div class="text-sm text-blue-200">
+                  You reach out via email or WhatsApp with your academy's batch
+                  count and student size
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 mt-0.5"
+                  style="background: #f59e0b"
+                >
+                  2
+                </div>
+                <div class="text-sm text-blue-200">
+                  We schedule a 15-minute live demo tailored to your setup —
+                  same day or next day
+                </div>
+              </li>
+              <li class="flex items-start gap-4">
+                <div
+                  class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-sm text-white flex-shrink-0 mt-0.5"
+                  style="background: #f59e0b"
+                >
+                  3
+                </div>
+                <div class="text-sm text-blue-200">
+                  You pick a plan, make payment, and we deploy + hand over your
+                  live system within 24 hours
+                </div>
+              </li>
+            </ol>
+            <a
+              href="mailto:kewin.thanki@gmail.com?subject=Chess Attendance & Billing System — Demo Request"
+              class="mt-6 block text-center glow-btn text-white font-bold py-3.5 rounded-xl text-sm"
+            >
+              Book a Free Demo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════════ -->
+    <footer
+      style="background: #0a1e3d"
+      class="text-blue-300 text-sm py-10 px-6"
+    >
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8"
+        >
+          <div class="max-w-sm">
+            <div
+              class="flex items-center gap-2 text-white font-bold text-base mb-3"
+            >
+              <span class="text-xl">♟️</span> Axeron Technologies
+            </div>
+            <p class="text-blue-400 text-xs leading-relaxed">
+              Building purpose-built software for chess coaching businesses.
+              Chess Attendance & Billing System is our flagship product — the
+              complete management platform for chess academies.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-8 text-xs">
+            <div>
+              <div
+                class="text-white font-semibold mb-3 uppercase tracking-wider text-xs"
+              >
+                Product
+              </div>
+              <div class="space-y-2">
+                <a
+                  href="chess-attendance-billing-system.html"
+                  class="block hover:text-white transition"
+                  >Chess Attendance & Billing System</a
+                >
+                <a
+                  href="chess-attendance-billing-system.html#features"
+                  class="block hover:text-white transition"
+                  >Features</a
+                >
+                <a href="#plans" class="block hover:text-white transition"
+                  >Pricing</a
+                >
+                <a href="#compare" class="block hover:text-white transition"
+                  >Plan Comparison</a
+                >
+              </div>
+            </div>
+            <div>
+              <div
+                class="text-white font-semibold mb-3 uppercase tracking-wider text-xs"
+              >
+                Company
+              </div>
+              <div class="space-y-2">
+                <a
+                  href="index.html#about"
+                  class="block hover:text-white transition"
+                  >About</a
+                >
+                <a href="#contact" class="block hover:text-white transition"
+                  >Contact</a
+                >
+                <a
+                  href="mailto:kewin.thanki@gmail.com"
+                  class="block hover:text-white transition"
+                  >Support</a
+                >
+                <a href="#faq" class="block hover:text-white transition">FAQ</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <div class="text-blue-400 text-xs">
+            © 2026 Axeron Technologies. All rights reserved.
+          </div>
+          <div class="text-blue-400 text-xs">
+            Built and maintained by Kevin Thanki · Ahmedabad, India
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════
+         PRICING TOGGLE JAVASCRIPT
+    ═══════════════════════════════════════════ -->
+    <script>
+      const plans = ["starter", "pro", "ent"];
+      const periods = ["monthly", "biannual", "annual", "lifetime"];
+
+      function setBilling(period) {
+        periods.forEach((p) => {
+          const btn = document.getElementById("tab-" + p);
+          if (btn) btn.classList.toggle("active", p === period);
+        });
+        plans.forEach((plan) => {
+          periods.forEach((p) => {
+            const el = document.getElementById(plan + "-" + p);
+            if (!el) return;
+            el.classList.remove("visible");
+            if (p === period) el.classList.add("visible");
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
