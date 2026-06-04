@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      Chess Attendance & Billing System — Pricing & Plans for Chess Academies |
+      ChessDesk — Pricing & Plans for Chess Academies |
       Axeron Technologies
     </title>
     <meta
@@ -449,7 +449,7 @@
           class="text-4xl md:text-5xl font-extrabold leading-tight mb-5 tracking-tight"
         >
           One Price. Your Software.<br />
-          <span style="color: #fbbf24">No Monthly Surprises.</span>
+          <span style="color: #fbbf24">No Hidden Surprises.</span>
         </h1>
         <p class="text-lg text-blue-200 max-w-xl mx-auto leading-relaxed mb-8">
           License-based software that runs on your own server. Your data lives
@@ -465,7 +465,7 @@
             >✅ License-based, not SaaS</span
           >
           <span class="flex items-center gap-2"
-            >✅ Free updates for 2 years</span
+            >✅ Updates included while licensed</span
           >
         </div>
       </div>
@@ -493,22 +493,18 @@
             class="bg-white rounded-xl p-1.5 shadow-card border border-gray-100 flex gap-1 flex-wrap justify-center"
           >
             <button
-              class="tab-btn active"
-              onclick="setBilling('monthly')"
-              id="tab-monthly"
+              class="tab-btn"
+              onclick="setBilling('quarterly')"
+              id="tab-quarterly"
             >
-              Monthly
+              3 Months
             </button>
             <button
-              class="tab-btn"
+              class="tab-btn active"
               onclick="setBilling('biannual')"
               id="tab-biannual"
             >
               6 Months
-              <span
-                class="ml-1.5 text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full"
-                >Save 33%</span
-              >
             </button>
             <button
               class="tab-btn"
@@ -516,21 +512,6 @@
               id="tab-annual"
             >
               1 Year
-              <span
-                class="ml-1.5 text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full"
-                >Save 47%</span
-              >
-            </button>
-            <button
-              class="tab-btn"
-              onclick="setBilling('lifetime')"
-              id="tab-lifetime"
-            >
-              Lifetime
-              <span
-                class="ml-1.5 text-xs bg-yellow-100 text-yellow-700 font-bold px-2 py-0.5 rounded-full"
-                >Best Value</span
-              >
             </button>
           </div>
         </div>
@@ -564,26 +545,23 @@
             </div>
 
             <!-- Prices -->
-            <div
-              class="price-display visible flex-col mb-6"
-              id="starter-monthly"
-            >
-              <div class="flex items-end gap-1">
-                <span class="text-5xl font-black text-navy">₹2,499</span>
+            <div class="price-display flex-col mb-6" id="starter-quarterly">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹5,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per month · billed monthly</span
+                >for 3 months · billed quarterly</span
               >
             </div>
-            <div class="price-display flex-col mb-6" id="starter-biannual">
+            <div
+              class="price-display visible flex-col mb-6"
+              id="starter-biannual"
+            >
               <div class="flex items-end gap-2">
                 <span class="text-5xl font-black text-navy">₹9,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · <s class="text-gray-300">₹14,994</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹4,995</span
-                ></span
+                >for 6 months · billed half-yearly</span
               >
             </div>
             <div class="price-display flex-col mb-6" id="starter-annual">
@@ -591,21 +569,7 @@
                 <span class="text-5xl font-black text-navy">₹15,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per year · <s class="text-gray-300">₹29,988</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹13,989</span
-                ></span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="starter-lifetime">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹39,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >one-time · own it forever</span
-              >
-              <span class="text-xs text-blue-400 mt-1"
-                >Includes updates for 2 years</span
+                >per year · billed annually</span
               >
             </div>
 
@@ -615,7 +579,7 @@
               style="background: #f0f4fb"
             >
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">50</div>
+                <div class="text-2xl font-black text-navy">75</div>
                 <div class="text-xs text-gray-500 font-medium">Students</div>
               </div>
               <div class="w-px bg-gray-200"></div>
@@ -625,7 +589,7 @@
               </div>
               <div class="w-px bg-gray-200"></div>
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">3</div>
+                <div class="text-2xl font-black text-navy">5</div>
                 <div class="text-xs text-gray-500 font-medium">Coaches</div>
               </div>
             </div>
@@ -638,7 +602,11 @@
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
-                ><span>Invoice generation & billing</span>
+                ><span>Wallet billing & session statements</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Online payment collection (Razorpay)</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
@@ -693,23 +661,20 @@
               </p>
             </div>
 
-            <div class="price-display visible flex-col mb-6" id="pro-monthly">
-              <div class="flex items-end gap-1">
-                <span class="text-5xl font-black text-navy">₹4,499</span>
+            <div class="price-display flex-col mb-6" id="pro-quarterly">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹11,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per month · billed monthly</span
+                >for 3 months · billed quarterly</span
               >
             </div>
-            <div class="price-display flex-col mb-6" id="pro-biannual">
+            <div class="price-display visible flex-col mb-6" id="pro-biannual">
               <div class="flex items-end gap-2">
                 <span class="text-5xl font-black text-navy">₹19,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · <s class="text-gray-300">₹26,994</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹6,995</span
-                ></span
+                >for 6 months · billed half-yearly</span
               >
             </div>
             <div class="price-display flex-col mb-6" id="pro-annual">
@@ -717,21 +682,7 @@
                 <span class="text-5xl font-black text-navy">₹29,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per year · <s class="text-gray-300">₹53,988</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹23,989</span
-                ></span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="pro-lifetime">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹74,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >one-time · own it forever</span
-              >
-              <span class="text-xs text-blue-400 mt-1"
-                >Includes updates for 2 years</span
+                >per year · billed annually</span
               >
             </div>
 
@@ -739,7 +690,7 @@
               class="bg-yellow-50 rounded-xl px-4 py-3 mb-6 flex gap-6 text-center"
             >
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">150</div>
+                <div class="text-2xl font-black text-navy">250</div>
                 <div class="text-xs text-gray-500 font-medium">Students</div>
               </div>
               <div class="w-px bg-yellow-200"></div>
@@ -749,7 +700,7 @@
               </div>
               <div class="w-px bg-yellow-200"></div>
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">8</div>
+                <div class="text-2xl font-black text-navy">15</div>
                 <div class="text-xs text-gray-500 font-medium">Coaches</div>
               </div>
             </div>
@@ -774,6 +725,10 @@
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
                 ><span>Discount & wallet / credit system</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="feat-yes mt-0.5">✓</span
+                ><span>Online payment collection (Razorpay)</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
@@ -815,23 +770,20 @@
               </p>
             </div>
 
-            <div class="price-display visible flex-col mb-6" id="ent-monthly">
-              <div class="flex items-end gap-1">
-                <span class="text-5xl font-black text-navy">₹7,999</span>
+            <div class="price-display flex-col mb-6" id="ent-quarterly">
+              <div class="flex items-end gap-2">
+                <span class="text-5xl font-black text-navy">₹19,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per month · billed monthly</span
+                >for 3 months · billed quarterly</span
               >
             </div>
-            <div class="price-display flex-col mb-6" id="ent-biannual">
+            <div class="price-display visible flex-col mb-6" id="ent-biannual">
               <div class="flex items-end gap-2">
                 <span class="text-5xl font-black text-navy">₹34,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · <s class="text-gray-300">₹47,994</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹12,995</span
-                ></span
+                >for 6 months · billed half-yearly</span
               >
             </div>
             <div class="price-display flex-col mb-6" id="ent-annual">
@@ -839,21 +791,7 @@
                 <span class="text-5xl font-black text-navy">₹54,999</span>
               </div>
               <span class="text-gray-400 text-sm mt-1"
-                >per year · <s class="text-gray-300">₹95,988</s>
-                <span class="text-green-600 font-semibold ml-1"
-                  >save ₹40,989</span
-                ></span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="ent-lifetime">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹1,29,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >one-time · own it forever</span
-              >
-              <span class="text-xs text-blue-400 mt-1"
-                >Includes updates for 2 years</span
+                >per year · billed annually</span
               >
             </div>
 
@@ -861,17 +799,17 @@
               class="bg-purple-50 rounded-xl px-4 py-3 mb-6 flex gap-6 text-center"
             >
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-2xl font-black text-navy">1,000</div>
                 <div class="text-xs text-gray-500 font-medium">Students</div>
               </div>
               <div class="w-px bg-purple-200"></div>
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-2xl font-black text-navy">10</div>
                 <div class="text-xs text-gray-500 font-medium">Branches</div>
               </div>
               <div class="w-px bg-purple-200"></div>
               <div class="flex-1">
-                <div class="text-2xl font-black text-navy">∞</div>
+                <div class="text-2xl font-black text-navy">50</div>
                 <div class="text-xs text-gray-500 font-medium">Coaches</div>
               </div>
             </div>
@@ -894,7 +832,7 @@
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
-                ><span>Student import from Google Sheets</span>
+                ><span>Bulk CSV student import (hundreds at once)</span>
               </li>
               <li class="flex items-start gap-2.5">
                 <span class="feat-yes mt-0.5">✓</span
@@ -961,15 +899,15 @@
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">Students</td>
                 <td class="text-center px-4 py-3.5 font-semibold text-navy">
-                  50
+                  75
                 </td>
                 <td
                   class="text-center px-4 py-3.5 font-semibold text-navy bg-yellow-50"
                 >
-                  150
+                  250
                 </td>
                 <td class="text-center px-4 py-3.5 font-semibold text-navy">
-                  Unlimited
+                  1,000
                 </td>
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
@@ -983,21 +921,21 @@
                   3
                 </td>
                 <td class="text-center px-4 py-3.5 font-semibold text-navy">
-                  Unlimited
+                  10
                 </td>
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">Coach logins</td>
                 <td class="text-center px-4 py-3.5 font-semibold text-navy">
-                  3
+                  5
                 </td>
                 <td
                   class="text-center px-4 py-3.5 font-semibold text-navy bg-yellow-50"
                 >
-                  8
+                  15
                 </td>
                 <td class="text-center px-4 py-3.5 font-semibold text-navy">
-                  Unlimited
+                  50
                 </td>
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
@@ -1055,7 +993,7 @@
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">
-                  Invoice generation & tracking
+                  Wallet billing & session statements
                 </td>
                 <td class="text-center px-4 py-3.5 text-green-500 font-bold">
                   ✓
@@ -1071,7 +1009,7 @@
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">
-                  Flexible billing (per session / monthly / yearly)
+                  Flexible billing (per session / hourly recurring)
                 </td>
                 <td class="text-center px-4 py-3.5 text-green-500 font-bold">
                   ✓
@@ -1088,6 +1026,22 @@
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">
                   Basic attendance & payment reports
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
+                  Online payment collection (Razorpay)
                 </td>
                 <td class="text-center px-4 py-3.5 text-green-500 font-bold">
                   ✓
@@ -1160,6 +1114,22 @@
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">
+                  WhatsApp notifications (sessions, fees, alerts)
+                </td>
+                <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
+                  ✗
+                </td>
+                <td
+                  class="text-center px-4 py-3.5 text-green-500 font-bold bg-yellow-50"
+                >
+                  ✓
+                </td>
+                <td class="text-center px-4 py-3.5 text-green-500 font-bold">
+                  ✓
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/40 transition">
+                <td class="px-6 py-3.5 text-gray-700">
                   Discount codes & wallet / credit system
                 </td>
                 <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
@@ -1206,7 +1176,7 @@
               </tr>
               <tr class="hover:bg-blue-50/40 transition">
                 <td class="px-6 py-3.5 text-gray-700">
-                  Student import from Google Sheets
+                  Bulk CSV student import
                 </td>
                 <td class="text-center px-4 py-3.5 text-gray-300 font-bold">
                   ✗
@@ -1338,7 +1308,7 @@
             <div class="text-3xl mb-4">✅</div>
             <h3 class="font-bold text-lg mb-2">One-Tap Attendance</h3>
             <p class="text-blue-300 text-sm leading-relaxed">
-              Coaches mark PRESENT / ABSENT / LATE in under 60 seconds per
+              Coaches mark PRESENT / ABSENT in under 60 seconds per
               batch. Timestamped, logged, and accessible to the admin.
             </p>
           </div>
@@ -1346,18 +1316,19 @@
             <div class="text-3xl mb-4">💰</div>
             <h3 class="font-bold text-lg mb-2">Flexible Billing Engine</h3>
             <p class="text-blue-300 text-sm leading-relaxed">
-              Per session, monthly, yearly — per batch, per student. Apply
-              discount codes and custom fee overrides. Invoices auto-generate.
-              No more manual calculations.
+              Per session or by the hour (recurring sessions) — per batch, per
+              student. Apply discount codes and custom fee overrides. Fees
+              auto-debit from each student's prepaid wallet. No more manual
+              calculations.
             </p>
           </div>
           <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
             <div class="text-3xl mb-4">👩‍💻</div>
             <h3 class="font-bold text-lg mb-2">Student Portal</h3>
             <p class="text-blue-300 text-sm leading-relaxed">
-              Students log in to see their schedule, attendance history,
-              session statements, and wallet summary. Reduces routine follow-up
-              queries to the coach.
+              Students log in to see their schedule, attendance history, session
+              statements, and wallet summary. Reduces routine follow-up queries
+              to the coach.
             </p>
           </div>
           <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
@@ -1376,6 +1347,25 @@
               Admin, Manager, Coach, Student — each role sees only what it
               should. Full audit log of every action. Enterprise-grade security
               at academy scale.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">💳</div>
+            <h3 class="font-bold text-lg mb-2">Online Payment Collection</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Students top up their wallet via Razorpay — UPI, cards, and net
+              banking. Admin enables the gateway from the dashboard. Payments
+              reflect instantly in the wallet balance and cover session fees
+              automatically.
+            </p>
+          </div>
+          <div class="bg-white/8 border border-white/15 rounded-2xl p-6">
+            <div class="text-3xl mb-4">📥</div>
+            <h3 class="font-bold text-lg mb-2">Bulk Student Import</h3>
+            <p class="text-blue-300 text-sm leading-relaxed">
+              Import hundreds of students at once via a CSV file. The system
+              validates every row — catching errors before committing — and
+              reports them clearly. Enterprise plan feature.
             </p>
           </div>
         </div>
@@ -1567,15 +1557,17 @@
             <summary
               class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
             >
-              Can I import my existing student data from Google Sheets?
+              Can I import my existing student data in bulk?
               <span class="arrow text-gray-400 text-xl ml-4">▾</span>
             </summary>
             <div
               class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
             >
-              Yes. On the Enterprise plan, Google Sheets import is included.
-              For Starter and Professional, you can add students manually or we
-              can help with onboarding separately if needed.
+              Yes. On the Enterprise plan, bulk CSV import is included. Download
+              the template CSV, fill in your student data, and upload it — the
+              system validates every row and shows any errors before committing.
+              For Starter and Professional, students are added manually (2–3
+              minutes each) or we can quote a one-time migration.
             </div>
           </details>
 
@@ -1583,19 +1575,21 @@
             <summary
               class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
             >
-              Does the Lifetime license cover future major versions?
+              Can students pay fees online?
               <span class="arrow text-gray-400 text-xl ml-4">▾</span>
             </summary>
             <div
               class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
             >
-              The Lifetime license covers all updates within the current major
-              version (v1.x) for 2 years. If a future major version (v2) is
-              released, existing lifetime holders will receive a significant
-              upgrade discount. You will never be forced to pay for updates to
-              continue using what you already purchased.
+              Yes. When the admin enables the Razorpay gateway from Payment
+              Settings, students can top up their wallet directly from the
+              student portal — via UPI, debit/credit cards, or net banking. Once
+              topped up, session fees are auto-debited from the wallet
+              balance. No cash handling required, and the admin sees every
+              transaction in the system.
             </div>
           </details>
+
           <details class="bg-white rounded-2xl border border-gray-200 group">
             <summary
               class="flex justify-between items-center px-6 py-5 font-semibold text-navy text-base"
@@ -1749,7 +1743,7 @@
               </li>
             </ol>
             <a
-              href="mailto:axerontechnologies@gmail.com?subject=Chess Attendance & Billing System — Demo Request"
+              href="mailto:axerontechnologies@gmail.com?subject=ChessDesk — Demo Request"
               class="mt-6 block text-center glow-btn text-white font-bold py-3.5 rounded-xl text-sm"
             >
               Book a Free Demo →
@@ -1780,7 +1774,7 @@
             </div>
             <p class="text-blue-400 text-xs leading-relaxed">
               Building purpose-built software for chess coaching businesses.
-              Chess Attendance & Billing System is our flagship product — the
+              ChessDesk is our flagship product — the
               complete management platform for chess academies.
             </p>
           </div>
@@ -1795,7 +1789,7 @@
                 <a
                   href="chess-attendance-billing-system.html"
                   class="block hover:text-white transition"
-                  >Chess Attendance & Billing System</a
+                  >ChessDesk</a
                 >
                 <a
                   href="chess-attendance-billing-system.html#features"
@@ -1853,7 +1847,7 @@
     ═══════════════════════════════════════════ -->
     <script>
       const plans = ["starter", "pro", "ent"];
-      const periods = ["monthly", "biannual", "annual", "lifetime"];
+      const periods = ["quarterly", "biannual", "annual"];
 
       function setBilling(period) {
         periods.forEach((p) => {
