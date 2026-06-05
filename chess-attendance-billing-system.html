@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>
       ChessDesk — Chess Academy Management Software by Axeron Technologies
     </title>
@@ -265,6 +266,100 @@
         transition: transform 0.2s ease;
         display: inline-block;
       }
+
+      .demo-section {
+        background: linear-gradient(
+          180deg,
+          #0a1e3d 0%,
+          #0f2447 45%,
+          #f0f4fb 45%,
+          #f0f4fb 100%
+        );
+      }
+      .demo-video-shell {
+        position: relative;
+        padding: 3px;
+        border-radius: 1.25rem;
+        background: linear-gradient(
+          135deg,
+          rgba(245, 158, 11, 0.85),
+          rgba(26, 58, 110, 0.6),
+          rgba(251, 191, 36, 0.5)
+        );
+        box-shadow:
+          0 25px 60px rgba(10, 30, 61, 0.35),
+          0 0 0 1px rgba(255, 255, 255, 0.08);
+      }
+      .demo-video-inner {
+        border-radius: calc(1.25rem - 3px);
+        overflow: hidden;
+        background: #0a1e3d;
+      }
+      .demo-video-aspect {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+      }
+      .demo-video-aspect iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .demo-video-poster {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0a1e3d;
+        text-decoration: none;
+        color: inherit;
+      }
+      .demo-video-poster img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.72;
+        transition: opacity 0.25s ease;
+      }
+      .demo-video-poster:hover img {
+        opacity: 0.55;
+      }
+      .demo-play-ring {
+        position: relative;
+        z-index: 1;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+        box-shadow: 0 12px 32px rgba(245, 158, 11, 0.45);
+        transition: transform 0.2s ease;
+      }
+      .demo-video-poster:hover .demo-play-ring {
+        transform: scale(1.06);
+      }
+      .demo-play-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #bfdbfe;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 0.4rem 0.9rem;
+        border-radius: 9999px;
+        margin-bottom: 1rem;
+      }
     </style>
   </head>
   <body class="font-sans text-gray-800 antialiased">
@@ -392,6 +487,11 @@
             >Get ChessDesk →</a
           >
           <a
+            href="#demo"
+            class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-base transition"
+            >Watch Demo ▶</a
+          >
+          <a
             href="#contact"
             class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl text-base transition"
             >Book a Demo</a
@@ -404,6 +504,45 @@
           <span>✅ License-based, self-hosted</span>
           <span>✅ Setup in one day</span>
         </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PRODUCT DEMO VIDEO
+    ═══════════════════════════════════════════ -->
+    <section id="demo" class="demo-section pt-4 pb-24 px-6">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+          <div class="demo-play-badge mx-auto">
+            <span
+              class="inline-flex w-5 h-5 items-center justify-center rounded-full bg-amber-400/20 text-amber-300 text-xs"
+              >▶</span
+            >
+            Product Demo
+          </div>
+          <h2
+            class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-tight"
+          >
+            See ChessDesk in Action
+          </h2>
+          <p class="text-blue-200 max-w-xl mx-auto leading-relaxed">
+            A full walkthrough of attendance, billing, coach dashboards, and the
+            student portal — everything your academy needs, in one platform.
+          </p>
+        </div>
+        <div class="demo-video-shell">
+          <div class="demo-video-inner">
+            <div class="demo-video-aspect" id="demo-video-player"></div>
+          </div>
+        </div>
+        <p class="text-center mt-6 text-sm text-gray-500">
+          Prefer a live walkthrough with your academy's data?
+          <a
+            href="#contact"
+            class="text-navy font-semibold hover:text-navy-light transition underline underline-offset-2"
+            >Book a free demo →</a
+          >
+        </p>
       </div>
     </section>
 
@@ -2299,6 +2438,42 @@
         document.getElementById("role-" + role).classList.add("active");
         event.currentTarget.classList.add("active");
       }
+
+      (function initDemoVideo() {
+        var container = document.getElementById("demo-video-player");
+        if (!container) return;
+
+        var videoId = "LZMW8DUcMgE";
+        var watchUrl =
+          "https://www.youtube.com/watch?v=" + videoId;
+        var thumbUrl =
+          "https://img.youtube.com/vi/" + videoId + "/maxresdefault.jpg";
+
+        if (window.location.protocol === "file:") {
+          container.innerHTML =
+            '<a class="demo-video-poster" href="' +
+            watchUrl +
+            '" target="_blank" rel="noopener noreferrer" aria-label="Watch ChessDesk product demo on YouTube">' +
+            '<img src="' +
+            thumbUrl +
+            '" alt="ChessDesk product demo thumbnail" loading="lazy" />' +
+            '<span class="demo-play-ring" aria-hidden="true">▶</span>' +
+            "</a>";
+          return;
+        }
+
+        var origin = encodeURIComponent(window.location.origin);
+        var embedUrl =
+          "https://www.youtube.com/embed/" +
+          videoId +
+          "?rel=0&modestbranding=1&origin=" +
+          origin;
+
+        container.innerHTML =
+          '<iframe src="' +
+          embedUrl +
+          '" title="ChessDesk Product Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      })();
     </script>
   </body>
 </html>
