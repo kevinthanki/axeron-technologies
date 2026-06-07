@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      ChessDesk — Pricing & Plans for Chess Academies |
+      ChessDesk — Plans & Licensing for Chess Academies |
       Axeron Technologies
     </title>
     <meta
       name="description"
-      content="Simple, transparent pricing for chess academies. License-based software. Self-hosted on your server. Your data stays with you."
+      content="ChessDesk license plans for chess academies worldwide. Self-hosted on your server. Contact Axeron Technologies for pricing in your region."
     />
     <link rel="icon" type="image/png" href="axeron-logo.png" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -442,23 +442,22 @@
     <section class="gradient-hero text-white pt-20 pb-16 px-6">
       <div class="max-w-3xl mx-auto text-center">
         <div class="badge-new mb-6">
-          🎁 &nbsp;Founding Customer Offer — 30% off any plan, first 20
-          academies only
+          🌍 &nbsp;Licensed globally · Self-hosted on your server
         </div>
         <h1
           class="text-4xl md:text-5xl font-extrabold leading-tight mb-5 tracking-tight"
         >
-          One Price. Your Software.<br />
-          <span style="color: #fbbf24">No Hidden Surprises.</span>
+          Your Software.<br />
+          <span style="color: #fbbf24">Your Server. Your Data.</span>
         </h1>
         <p class="text-lg text-blue-200 max-w-xl mx-auto leading-relaxed mb-8">
-          License-based software that runs on your own server. Your data lives
-          with you — not on our cloud. Choose the plan that fits your academy
-          size.
+          ChessDesk is license-based software built for chess academies
+          worldwide. Plans and pricing vary by country — reach out and we'll
+          share a quote tailored to your academy.
         </p>
         <!-- Key Trust Points -->
         <div
-          class="flex flex-wrap justify-center gap-5 text-sm font-medium text-blue-200"
+          class="flex flex-wrap justify-center gap-5 text-sm font-medium text-blue-200 mb-10"
         >
           <span class="flex items-center gap-2">✅ Your data, your server</span>
           <span class="flex items-center gap-2"
@@ -468,52 +467,76 @@
             >✅ Updates included while licensed</span
           >
         </div>
+        <a
+          href="#contact"
+          class="glow-btn text-white font-bold px-10 py-4 rounded-xl text-base inline-block"
+          >Get a Quote →</a
+        >
       </div>
     </section>
 
     <!-- ═══════════════════════════════════════════
-         BILLING TOGGLE
+         CONTACT FOR PRICING
     ═══════════════════════════════════════════ -->
-    <section id="plans" class="pt-16 pb-4 px-6">
+    <section class="pt-16 pb-4 px-6">
+      <div class="max-w-3xl mx-auto">
+        <div
+          class="relative overflow-hidden rounded-2xl border border-amber-200/60 bg-gradient-to-br from-amber-50 via-white to-blue-50 p-8 md:p-10 text-center shadow-card"
+        >
+          <div
+            class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-amber-200/30 blur-2xl"
+            aria-hidden="true"
+          ></div>
+          <div
+            class="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-blue-200/30 blur-2xl"
+            aria-hidden="true"
+          ></div>
+          <div class="relative">
+            <div class="text-4xl mb-4">🌐</div>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-navy mb-3">
+              Pricing &amp; Purchase — Contact Us
+            </h2>
+            <p class="text-gray-600 max-w-lg mx-auto leading-relaxed mb-6">
+              We don't publish fixed prices online because licensing costs differ
+              by country, academy size, and plan. Tell us where you're based and
+              how many students you manage — we'll send you a clear quote and
+              walk you through purchase within a few hours.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="mailto:axerontechnologies@gmail.com?subject=ChessDesk — Pricing & Purchase Inquiry"
+                class="glow-btn text-white font-bold px-7 py-3.5 rounded-xl text-sm inline-block"
+                >Email for Pricing →</a
+              >
+              <a
+                href="tel:+919426118580"
+                class="navy-btn text-white font-bold px-7 py-3.5 rounded-xl text-sm inline-block"
+                >WhatsApp / Call</a
+              >
+            </div>
+            <p class="text-gray-400 text-xs mt-5">
+              axerontechnologies@gmail.com · Response within 4 hours (Mon–Sat)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         PLAN OVERVIEW
+    ═══════════════════════════════════════════ -->
+    <section id="plans" class="pt-12 pb-4 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-10">
-          <div class="section-pill">Pricing Plans</div>
+          <div class="section-pill">License Plans</div>
           <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-3">
             Choose Your License
           </h2>
           <p class="text-gray-500 max-w-lg mx-auto text-base">
             All plans include the complete software. The only difference is how
-            many students and branches you can manage.
+            many students and branches you can manage. Contact us for pricing in
+            your region.
           </p>
-        </div>
-
-        <!-- Toggle buttons -->
-        <div class="flex justify-center mb-10">
-          <div
-            class="bg-white rounded-xl p-1.5 shadow-card border border-gray-100 flex gap-1 flex-wrap justify-center"
-          >
-            <button
-              class="tab-btn"
-              onclick="setBilling('quarterly')"
-              id="tab-quarterly"
-            >
-              3 Months
-            </button>
-            <button
-              class="tab-btn active"
-              onclick="setBilling('biannual')"
-              id="tab-biannual"
-            >
-              6 Months
-            </button>
-            <button
-              class="tab-btn"
-              onclick="setBilling('annual')"
-              id="tab-annual"
-            >
-              1 Year
-            </button>
-          </div>
         </div>
       </div>
     </section>
@@ -544,33 +567,16 @@
               </p>
             </div>
 
-            <!-- Prices -->
-            <div class="price-display flex-col mb-6" id="starter-quarterly">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹5,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 3 months · billed quarterly</span
-              >
-            </div>
+            <!-- Quote -->
             <div
-              class="price-display visible flex-col mb-6"
-              id="starter-biannual"
+              class="mb-6 rounded-xl border border-dashed border-gray-200 bg-gray-50 px-4 py-5 text-center"
             >
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹9,999</span>
+              <div class="text-sm font-bold text-navy mb-1">
+                Contact us for pricing
               </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · billed half-yearly</span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="starter-annual">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹15,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >per year · billed annually</span
-              >
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Quote based on your country, academy size, and license term
+              </p>
             </div>
 
             <!-- Limits -->
@@ -638,7 +644,7 @@
               href="#contact"
               class="block text-center navy-btn text-white font-bold py-3.5 rounded-xl text-sm"
             >
-              Get Started →
+              Get a Quote →
             </a>
           </div>
 
@@ -661,29 +667,15 @@
               </p>
             </div>
 
-            <div class="price-display flex-col mb-6" id="pro-quarterly">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹11,999</span>
+            <div
+              class="mb-6 rounded-xl border border-dashed border-yellow-200 bg-yellow-50/60 px-4 py-5 text-center"
+            >
+              <div class="text-sm font-bold text-navy mb-1">
+                Contact us for pricing
               </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 3 months · billed quarterly</span
-              >
-            </div>
-            <div class="price-display visible flex-col mb-6" id="pro-biannual">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹19,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · billed half-yearly</span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="pro-annual">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹29,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >per year · billed annually</span
-              >
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Quote based on your country, academy size, and license term
+              </p>
             </div>
 
             <div
@@ -748,7 +740,7 @@
               href="#contact"
               class="block text-center glow-btn text-white font-bold py-3.5 rounded-xl text-sm"
             >
-              Get Started →
+              Get a Quote →
             </a>
           </div>
 
@@ -770,29 +762,15 @@
               </p>
             </div>
 
-            <div class="price-display flex-col mb-6" id="ent-quarterly">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹19,999</span>
+            <div
+              class="mb-6 rounded-xl border border-dashed border-purple-200 bg-purple-50/60 px-4 py-5 text-center"
+            >
+              <div class="text-sm font-bold text-navy mb-1">
+                Contact us for pricing
               </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 3 months · billed quarterly</span
-              >
-            </div>
-            <div class="price-display visible flex-col mb-6" id="ent-biannual">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹34,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >for 6 months · billed half-yearly</span
-              >
-            </div>
-            <div class="price-display flex-col mb-6" id="ent-annual">
-              <div class="flex items-end gap-2">
-                <span class="text-5xl font-black text-navy">₹54,999</span>
-              </div>
-              <span class="text-gray-400 text-sm mt-1"
-                >per year · billed annually</span
-              >
+              <p class="text-xs text-gray-500 leading-relaxed">
+                Quote based on your country, academy size, and license term
+              </p>
             </div>
 
             <div
@@ -856,7 +834,7 @@
               href="#contact"
               class="block text-center navy-btn text-white font-bold py-3.5 rounded-xl text-sm"
             >
-              Get Started →
+              Get a Quote →
             </a>
           </div>
         </div>
@@ -1417,10 +1395,8 @@
             >
               Starter AMC
             </div>
-            <div class="text-3xl font-black text-navy mb-1">
-              ₹4,999<span class="text-base font-normal text-gray-400"
-                >/year</span
-              >
+            <div class="text-lg font-bold text-navy mb-1">
+              Contact for renewal pricing
             </div>
             <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
               <li class="flex items-start gap-2">
@@ -1442,10 +1418,8 @@
             >
               Professional AMC
             </div>
-            <div class="text-3xl font-black text-navy mb-1">
-              ₹8,999<span class="text-base font-normal text-gray-400"
-                >/year</span
-              >
+            <div class="text-lg font-bold text-navy mb-1">
+              Contact for renewal pricing
             </div>
             <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
               <li class="flex items-start gap-2">
@@ -1467,10 +1441,8 @@
             >
               Enterprise AMC
             </div>
-            <div class="text-3xl font-black text-navy mb-1">
-              ₹14,999<span class="text-base font-normal text-gray-400"
-                >/year</span
-              >
+            <div class="text-lg font-bold text-navy mb-1">
+              Contact for renewal pricing
             </div>
             <ul class="text-sm text-gray-500 mt-4 space-y-2 text-left">
               <li class="flex items-start gap-2">
@@ -1486,8 +1458,8 @@
           </div>
         </div>
         <p class="text-center text-gray-400 text-sm mt-6">
-          ℹ️ AMC renewal restores and maintains your access along with updates
-          and support.
+          ℹ️ AMC renewal rates vary by region — email us for a quote when your
+          license is nearing expiry.
         </p>
       </div>
     </section>
@@ -1516,9 +1488,8 @@
             >
               A Linux server (VPS) with at least 2 vCPU and 4 GB RAM, Docker
               installed, and a domain name. If you don't have any of this, we'll
-              help you set it up. A basic VPS costs ₹500–1,500/month on
-              DigitalOcean, Hetzner, or any Indian provider. We handle the
-              deployment.
+              help you set it up. Hosting costs depend on your provider and
+              region — we handle the deployment.
             </div>
           </details>
           <details class="bg-white rounded-2xl border border-gray-200 group">
@@ -1600,9 +1571,9 @@
             <div
               class="faq-body px-6 pb-5 text-gray-600 text-sm leading-relaxed"
             >
-              Yes. You pay the price difference for the remaining period of your
-              license. Your data stays intact — it's the same software, just
-              with the higher tier unlocked.
+              Yes. Contact us and we'll calculate the upgrade cost for the
+              remaining period of your license. Your data stays intact — it's
+              the same software, just with the higher tier unlocked.
             </div>
           </details>
           <details class="bg-white rounded-2xl border border-gray-200 group">
@@ -1633,11 +1604,12 @@
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
-            Ready to Get Started?
+            Ready to Get ChessDesk?
           </h2>
           <p class="text-blue-200 text-lg max-w-xl mx-auto">
-            Book a free 15-minute demo and see the software running with your
-            academy's own batch structure before you buy anything.
+            Tell us your country, student count, and number of branches — we'll
+            send you a personalised quote and walk you through purchase. No
+            commitment until you're ready.
           </p>
         </div>
         <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
@@ -1737,16 +1709,17 @@
                   3
                 </div>
                 <div class="text-sm text-blue-200">
-                  You pick a plan, make payment, and we deploy + hand over your
-                  live system within 24 hours
+                  We share a quote for your region, confirm your plan, and
+                  arrange payment — then deploy and hand over your live system
+                  within 24 hours
                 </div>
               </li>
             </ol>
             <a
-              href="mailto:axerontechnologies@gmail.com?subject=ChessDesk — Demo Request"
+              href="mailto:axerontechnologies@gmail.com?subject=ChessDesk — Pricing & Purchase Inquiry"
               class="mt-6 block text-center glow-btn text-white font-bold py-3.5 rounded-xl text-sm"
             >
-              Book a Free Demo →
+              Get a Quote →
             </a>
           </div>
         </div>
@@ -1796,8 +1769,8 @@
                   class="block hover:text-white transition"
                   >Features</a
                 >
-                <a href="#plans" class="block hover:text-white transition"
-                  >Pricing</a
+                <a href="#contact" class="block hover:text-white transition"
+                  >Get a Quote</a
                 >
                 <a href="#compare" class="block hover:text-white transition"
                   >Plan Comparison</a
@@ -1841,28 +1814,5 @@
         </div>
       </div>
     </footer>
-
-    <!-- ═══════════════════════════════════════════
-         PRICING TOGGLE JAVASCRIPT
-    ═══════════════════════════════════════════ -->
-    <script>
-      const plans = ["starter", "pro", "ent"];
-      const periods = ["quarterly", "biannual", "annual"];
-
-      function setBilling(period) {
-        periods.forEach((p) => {
-          const btn = document.getElementById("tab-" + p);
-          if (btn) btn.classList.toggle("active", p === period);
-        });
-        plans.forEach((plan) => {
-          periods.forEach((p) => {
-            const el = document.getElementById(plan + "-" + p);
-            if (!el) return;
-            el.classList.remove("visible");
-            if (p === period) el.classList.add("visible");
-          });
-        });
-      }
-    </script>
   </body>
 </html>
