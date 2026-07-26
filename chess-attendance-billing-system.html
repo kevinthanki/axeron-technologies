@@ -502,7 +502,7 @@
         >
           <span>✅ Your data, your server</span>
           <span>✅ License-based, self-hosted</span>
-          <span>✅ Setup in one day</span>
+          <span>✅ Fast setup on your server</span>
         </div>
       </div>
     </section>
@@ -553,9 +553,9 @@
       <div class="max-w-5xl mx-auto">
         <div class="text-center mb-14">
           <div class="section-pill">Core Features</div>
-          <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-4">
-            Everything Built In. Nothing Extra to Buy.
-          </h2>
+            <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-4">
+              Built for How Academies Actually Run
+            </h2>
           <p class="text-gray-500 max-w-2xl mx-auto">
             Built from real conversations with chess coaches. Every feature
             solves a problem that real academies face every week.
@@ -575,9 +575,9 @@
               Chess-Native Batch Structure
             </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Create batches exactly how you think — Beginner U800, Intermediate
-              U1200, Advanced U1600, Open. Set days, times, online / offline /
-              hybrid mode, and assign coaches per batch.
+              Create batches with levels you define — for example Beginner,
+              Intermediate, Advanced, or Open. Set days, times, online /
+              offline / hybrid mode, and assign coaches per batch.
             </p>
           </div>
 
@@ -647,11 +647,13 @@
             >
               👨‍👩‍👧
             </div>
-            <h3 class="font-bold text-lg text-navy mb-2">Student Portal</h3>
+            <h3 class="font-bold text-lg text-navy mb-2">
+              Student &amp; Parent Portals
+            </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Students log in to see their schedule, attendance history, session
-              statements, and wallet summary. Reduces admin overhead and routine
-              follow-up questions.
+              Students and parents log in to see schedules, attendance history,
+              session statements, and wallet summary. Reduces admin overhead and
+              routine follow-up questions.
             </p>
           </div>
 
@@ -668,9 +670,9 @@
               Automated Fee Reminders
             </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Low balance or fees due? The system sends automatic email and
-              WhatsApp reminders. Set it once — it runs itself and reduces
-              manual payment follow-ups.
+              Low balance or fees due? The system sends automatic email
+              reminders (WhatsApp on Professional and Enterprise). Set it once —
+              it runs itself and reduces manual payment follow-ups.
             </p>
           </div>
 
@@ -687,9 +689,9 @@
               Multi-Branch Management
             </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Run all your city locations from one admin login. Each branch
-              manages its own coaches, batches, students, and billing — all
-              visible and manageable from a single account.
+              Run multiple locations from one admin login (Professional and
+              Enterprise). Each branch manages its own coaches, batches,
+              students, and billing — all visible from a single account.
             </p>
           </div>
 
@@ -725,9 +727,8 @@
               Role-Based Access & Audit Logs
             </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Admin, Manager, Coach, Student — each role sees only what it
-              should. Complete audit log of every action taken. Enterprise-grade
-              security at chess academy scale.
+              Admin, Manager, Coach, Student, and Parent — each role sees only
+              what it should. Complete audit log of every action taken.
             </p>
           </div>
           <div
@@ -742,10 +743,10 @@
               Online Payment Collection
             </h3>
             <p class="text-gray-600 text-sm leading-relaxed">
-              Students top up their wallet via Razorpay — UPI, debit/credit
-              cards, and net banking — directly from the student portal. Admin
-              enables the gateway in one click, and top-ups reflect instantly
-              in the student's wallet.
+              On Professional and Enterprise, students and parents top up
+              wallets via Razorpay, Stripe, PayPal, or Mollie — depending on
+              your country — directly from their portal. Admin enables the
+              gateway from settings.
             </p>
           </div>
           <div
@@ -814,6 +815,12 @@
             >
               🎓 Student
             </button>
+            <button
+              class="role-tab px-5 py-2.5 rounded-lg text-sm font-semibold"
+              onclick="showRole('parent')"
+            >
+              👨‍👩‍👧 Parent
+            </button>
           </div>
         </div>
 
@@ -851,13 +858,12 @@
                   audit log of every action in the system
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-green-500 font-bold mt-0.5">✓</span> Custom
-                  branding with your academy's logo and name
+                  <span class="text-green-500 font-bold mt-0.5">✓</span>
+                  Custom branding with your logo and name (Enterprise)
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="text-green-500 font-bold mt-0.5">✓</span>
-                  Configure online payment gateway (Razorpay) from admin
-                  settings
+                  Online payment gateways on Professional &amp; Enterprise
                 </li>
               </ul>
             </div>
@@ -878,7 +884,7 @@
                   <div
                     class="flex-1 bg-gray-200 rounded text-xs px-3 py-1 text-gray-400 ml-2"
                   >
-                    chessdesk.app/admin
+                    youracademy.com/admin
                   </div>
                 </div>
                 <!-- Dashboard content -->
@@ -1155,7 +1161,7 @@
                   <div
                     class="flex-1 bg-gray-200 rounded text-xs px-3 py-1 text-gray-400 ml-2"
                   >
-                    chessdesk.app/manager
+                    youracademy.com/manager
                   </div>
                 </div>
                 <div
@@ -1427,7 +1433,7 @@
                   <div
                     class="flex-1 bg-gray-200 rounded text-xs px-3 py-1 text-gray-400 ml-2"
                   >
-                    chessdesk.app/coach
+                    youracademy.com/coach
                   </div>
                 </div>
                 <div
@@ -1669,7 +1675,7 @@
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="text-green-500 font-bold mt-0.5">✓</span> Top up
-                  wallet online via Razorpay — UPI, cards, or net banking
+                  wallet online when payment gateways are enabled (Pro+)
                 </li>
               </ul>
             </div>
@@ -1689,7 +1695,7 @@
                   <div
                     class="flex-1 bg-gray-200 rounded text-xs px-3 py-1 text-gray-400 ml-2"
                   >
-                    chessdesk.app/student
+                    youracademy.com/student
                   </div>
                 </div>
                 <div
@@ -1847,6 +1853,56 @@
             </div>
           </div>
         </div>
+
+        <!-- Parent Panel -->
+        <div id="role-parent" class="role-panel">
+          <div class="grid md:grid-cols-2 gap-8 items-start">
+            <div>
+              <h3 class="text-2xl font-extrabold text-navy mb-4">
+                The Parent Portal
+              </h3>
+              <p class="text-gray-600 mb-6 leading-relaxed">
+                Parents and guardians get a dedicated login to follow their
+                child's academy activity — schedule, attendance, statements, and
+                wallet — without sharing the student account.
+              </p>
+              <ul class="space-y-3 text-sm text-gray-700">
+                <li class="flex items-start gap-3">
+                  <span class="text-green-500 font-bold mt-0.5">✓</span> Switch
+                  between linked children from one login
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-500 font-bold mt-0.5">✓</span> View
+                  schedule, attendance history, and enrollments
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-500 font-bold mt-0.5">✓</span> Check
+                  wallet balance and session statements
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="text-green-500 font-bold mt-0.5">✓</span> Top up
+                  the child's wallet when online payments are enabled
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm"
+            >
+              <div
+                class="text-xs font-bold uppercase tracking-widest text-blue-400 mb-3"
+              >
+                youracademy.com/parent
+              </div>
+              <h4 class="text-lg font-bold text-navy mb-2">
+                Stay in the loop without chasing coaches
+              </h4>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Same clarity as the student portal — built for parents who want
+                visibility into attendance, fees, and upcoming sessions.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1933,7 +1989,7 @@
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-green-400 mt-0.5">✓</span> Online wallet
-                  top-up via Razorpay (UPI, debit/credit cards, net banking)
+                  top-up via Razorpay, Stripe, PayPal, or Mollie (Pro+)
                 </li>
                 <li class="flex items-start gap-2">
                   <span class="text-green-400 mt-0.5">✓</span> Discount codes
@@ -1990,9 +2046,10 @@
                 Scale Without Losing Control
               </h3>
               <p class="text-blue-300 text-sm leading-relaxed mb-4">
-                From 1 location to 10+ — ChessDesk grows with you. Each branch
-                is fully isolated but visible to the admin. Managers handle
-                branch-level operations while you see the full picture.
+                From a single branch to 10 on Enterprise — ChessDesk grows with
+                you. Each branch is fully isolated but visible to the admin.
+                Managers handle branch-level operations while you see the full
+                picture.
               </p>
               <ul class="space-y-2 text-sm text-blue-200">
                 <li class="flex items-start gap-2">
@@ -2026,11 +2083,11 @@
         <div class="text-center mb-14">
           <div class="section-pill">Setup</div>
           <h2 class="text-3xl md:text-4xl font-extrabold text-navy mb-4">
-            Up and Running in One Day
+            Up and Running Quickly
           </h2>
           <p class="text-gray-500 max-w-xl mx-auto">
-            No IT team needed. We do the deployment. You get a running system
-            handed to you.
+            We handle the deployment. You get a running system handed to you —
+            no day-to-day IT work required once it's live.
           </p>
         </div>
         <div class="space-y-6 max-w-3xl mx-auto">
@@ -2060,10 +2117,10 @@
                 Get a Quote &amp; Purchase
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed">
-                Tell us about your academy — student count, branches, and
-                setup. We share a quote and all plans include the complete
-                software, with capacity limits as the only difference.
-              </p>
+              Tell us about your academy — student count, branches, and setup.
+              We share a quote. Capacity and selected capabilities (payments,
+              WhatsApp, branding) depend on the plan you choose.
+            </p>
             </div>
           </div>
           <div class="flex gap-6 items-start">
@@ -2077,9 +2134,10 @@
                 We Deploy on Your Server
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed">
-                Within 24 hours, we deploy ChessDesk on your VPS or cloud
-                server. We configure your branches, levels, batches, add your
-                first coaches and students, and hand you a fully working system.
+                After purchase and a ready server, we deploy ChessDesk on your
+                VPS or cloud, configure your first branches, levels, and
+                batches, add coaches and students, and hand you a working
+                system.
               </p>
             </div>
           </div>
@@ -2095,9 +2153,9 @@
               </h3>
               <p class="text-gray-600 text-sm leading-relaxed">
                 Log in, mark your first session's attendance, and you're off.
-                Coaches use it on their phones. Students get login credentials
-                to view their own data. After 2 weeks of data, your reports
-                become powerful.
+                Coaches use it on their phones. Students and parents get login
+                credentials to view their own data. After 2 weeks of data, your
+                reports become powerful.
               </p>
             </div>
           </div>
@@ -2307,7 +2365,7 @@
                 </div>
                 <div class="text-sm text-blue-200">
                   You confirm your plan and quote, we deploy and hand over your
-                  live system within 24 hours
+                  live system
                 </div>
               </li>
             </ol>
